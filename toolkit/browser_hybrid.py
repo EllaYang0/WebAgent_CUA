@@ -15,6 +15,7 @@ from typing import Dict, List, Optional, Union
 
 from toolkit.mcp_client import *
 from toolkit.tool_explore import process_response
+from utils import lenient_json_extract
 
 # CUA (视觉) 相关配置
 WINDOWS_MCP_URL = os.getenv("WINDOWS_MCP_URL", "http://localhost:8015")
@@ -116,15 +117,14 @@ Nothing else, no explanation."""
     try:
         text = data["choices"][0]["message"]["content"]
         print(f"[verify] raw text: {text}")
-        # 去掉 markdown 代码块
-        text = re.sub(r'```(?:json)?\s*', '', text)
-        text = re.sub(r'```', '', text)
-        match = re.search(r'\{.*\}', text, re.DOTALL)
-        if match:
-            coords = json.loads(match.group())
-            return coords["x"], coords["y"]
-    except:
-        print("[find_coordinates] parse error, raw response:", data)
+        coords = lenient_json_extract(text)
+        if coords and 'x' in coords and 'y' in coords:
+            x, y = coords['x'], coords['y']
+            if x is None or y is None:
+                return None, None
+            return int(x), int(y)
+    except Exception as e:
+        print(f"[find_coordinates] parse error: {e}, raw response: {data}")
     return None, None
 
 
@@ -317,14 +317,10 @@ Nothing else."""
     try:
         text = data["choices"][0]["message"]["content"]
         print(f"[verify] raw text: {text}")
-        # 去掉 markdown 代码块
-        text = re.sub(r'```(?:json)?\s*', '', text)
-        text = re.sub(r'```', '', text)
-        match = re.search(r'\{.*\}', text, re.DOTALL)
-        if match:
-            result = json.loads(match.group())
-            success = result.get("success", False)
-            reason = result.get("reason", "unknown")
+        result = lenient_json_extract(text)
+        if result is not None and ('success' in result or 'correct' in result):
+            success = bool(result.get('success', result.get('correct', False)))
+            reason = result.get('reason') or result.get('reasoning') or 'unknown'
             print(f"[verify] success={success}, reason={reason}")
             return success, reason
     except Exception as e:

@@ -14,7 +14,7 @@ from prompts import *
 from toolkit.tool_search import Search
 from toolkit.mcp_client import mcp_client
 from toolkit.browser_hybrid import Visit, Click, Fill
-from utils import read_jsonl, count_tokens, call_llm
+from utils import read_jsonl, count_tokens, call_llm, lenient_json_extract
 
 
 def is_url_navigation_task(data: dict) -> bool:
@@ -98,13 +98,10 @@ Output only the JSON, nothing else."""
     messages = [{"role": "user", "content": eval_prompt}]
     response = await call_llm(sem, messages, 512, os.getenv("MODEL_NAME"))
 
-    try:
-        clean = re.sub(r'^```(?:json)?\s*', '', response.strip())
-        clean = re.sub(r'\s*```$', '', clean).strip()
-        result = json.loads(clean)
-        return result.get('correct', False), result.get('reasoning', '')
-    except Exception:
-        return False, f"JSON parse failed, fallback: {response[:100]}"
+    result = lenient_json_extract(response)
+    if result is None:
+        return False, f"JSON unrecoverable, raw: {(response or '')[:150]}"
+    return bool(result.get('correct', False)), result.get('reasoning') or result.get('reason') or ''
 
 
 async def call_tool(sem, tool_name: str, tool_args: dict, client, lock):
@@ -123,7 +120,7 @@ async def call_tool(sem, tool_name: str, tool_args: dict, client, lock):
             return f'Tool {tool_name} does not exist.'
 
 
-async def agentic_loop(sem, data, messages):
+async def agentic_loop(sem, data, messages, client, lock):
     global tokenizer
 
     task, start_url, gt_urls = parse_task_item(data)
@@ -140,9 +137,11 @@ async def agentic_loop(sem, data, messages):
     prediction = '[No Prediction]'
     eval_reasoning = ''
 
+    # mcp_client/SSE opened ONCE in main() and shared across all agentic_loop coroutines.
+    # Opening it per-task caused 50 parallel anyio TaskGroups → Python 3.13 cancelled
+    # every call_llm mid-await with "Ping task was cancelled" + ExceptionGroup.
+    # Shared client + sem['session'] + per-MCP-call lock is enough serialization.
     async with sem['session']:
-        async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
-
             try:
                 # 跨任务隔离：上一 task 跑完后，Edge 窗口 URL 可能停在
                 # google.com/travel/flights?tfs=...(上一 task 的 SPA 状态)。
@@ -157,33 +156,44 @@ async def agentic_loop(sem, data, messages):
                 except Exception as reset_err:
                     print(f"[agentic_loop] about:blank reset failed (non-fatal): {repr(reset_err)}")
 
-                init_result = await call_tool(sem, 'visit', {'url': start_url, 'goal': task}, client, lock)
-                if isinstance(init_result, tuple):
-                    init_obs, _ = init_result
-                elif isinstance(init_result, str):
-                    init_obs = init_result
-                else:
-                    init_obs = str(init_result)
+                # Only do an initial visit if the task has a concrete start_url (navi_bench).
+                # browsecomp tasks have start_url=None — calling visit(None) triggers
+                # browser_navigate(url=None), which kills the Playwright SSE session and
+                # cascades into an anyio ExceptionGroup on mcp_client teardown. For those
+                # tasks the agent is expected to call `search` / `visit` on its own anyway.
+                if start_url:
+                    init_result = await call_tool(sem, 'visit', {'url': start_url, 'goal': task}, client, lock)
+                    if isinstance(init_result, tuple):
+                        init_obs, _ = init_result
+                    elif isinstance(init_result, str):
+                        init_obs = init_result
+                    else:
+                        init_obs = str(init_result)
 
-                visited_urls.append(start_url)
-                trajectory.append({
-                    'turn': 0,
-                    'action': 'init_visit',
-                    'url': start_url,
-                    'observation_snippet': init_obs[:200],
-                    'timestamp': time.time(),
-                })
-                record.append({"role": "user", "content": f"<tool_response>\n{init_obs}\n</tool_response>",
-                                "tool_name": "visit", "tool_args": {"url": start_url}})
+                    visited_urls.append(start_url)
+                    trajectory.append({
+                        'turn': 0,
+                        'action': 'init_visit',
+                        'url': start_url,
+                        'observation_snippet': init_obs[:200],
+                        'timestamp': time.time(),
+                    })
+                    record.append({"role": "user", "content": f"<tool_response>\n{init_obs}\n</tool_response>",
+                                    "tool_name": "visit", "tool_args": {"url": start_url}})
+                else:
+                    print(f"[agentic_loop] no start_url for task_id={task_id}; skipping init visit")
             except Exception as e:
                 print(f"Init visit failed: {e}")
 
+            print(f"[agentic_loop] task_id={task_id} entering main turn loop with {len(record)} record messages", flush=True)
             for turn in range(MAX_AGENT_TURN):
+                print(f"[agentic_loop] task_id={task_id} turn={turn}", flush=True)
                 if count_tokens(record, tokenizer) > MAX_AGENT_LEN:
                     termination = 'max_length_exceeded'
                     break
 
                 response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+                print(f"[agentic_loop] task_id={task_id} turn={turn} response_len={len(response) if response else 'None/empty'}", flush=True)
 
                 if not response:
                     return {
@@ -394,7 +404,9 @@ async def main(sem, rollout_count, input_path, output_path):
         for visited_data in read_jsonl(success_path):
             visited_counter[visited_data['task_id']] += 1
 
-    tasks = []
+    # Collect task input tuples first (don't instantiate coroutines yet — those need
+    # the shared client/lock which only exists inside the mcp_client context below).
+    task_inputs = []
     pending_counter = Counter()
     for data in dataset:
         task_id = data.get('task_id', data.get('id'))
@@ -409,18 +421,20 @@ async def main(sem, rollout_count, input_path, output_path):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": task}
             ]
-            tasks.append(agentic_loop(sem, data, messages))
+            task_inputs.append((data, messages))
             pending_counter[task_id] += 1
 
-    print(f"Total number of tasks: {len(tasks)}")
+    print(f"Total number of tasks: {len(task_inputs)}")
 
-    with open(success_path, "a") as f_success, \
+    # ONE shared mcp_client for the whole run (see agentic_loop comment).
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+      with open(success_path, "a") as f_success, \
          open(failure_path, "a") as f_failure, \
          open(trajectory_path, "a") as f_traj:
 
-        for future in tqdm(asyncio.as_completed(tasks), total=len(tasks), desc="Navi-Bench Rollout ..."):
+        for (data, messages) in tqdm(task_inputs, total=len(task_inputs), desc="Navi-Bench Rollout ..."):
             try:
-                result = await future
+                result = await agentic_loop(sem, data, messages, client, lock)
 
                 trajectory_record = {
                     'task_id': result['task_id'],
@@ -465,7 +479,7 @@ if __name__ == '__main__':
     MAX_AGENT_LEN = 128 * 1024
     MAX_SINGLE_GEN_TOKENS = 8192
     MAX_SUMMARY_SHARD_LEN = 64 * 1024
-    benchmark_name = "smoke_test"
+    benchmark_name = "browsecomp_first50"
     MODEL_NAME = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
     MAX_WORKERS = 1
     sem = {
