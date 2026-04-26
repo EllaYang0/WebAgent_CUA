@@ -77,8 +77,36 @@ def evaluate_gt_info(visited_urls: list, gt_info: list) -> tuple[bool, str]:
     return True, f"matched: {last_url}"
 
 
-async def evaluate_answer_with_llm(sem, task: str, prediction: str) -> tuple[bool, str]:
-    eval_prompt = f"""You are an evaluator for a web agent benchmark. The agent was given a task and produced an answer.
+async def evaluate_answer_with_llm(sem, task: str, prediction: str, ground_truth: str = None) -> tuple[bool, str]:
+    # Without ground truth the judge can only check whether the answer "sounds
+    # plausible" for the question — it has no way to know if it's actually right
+    # — so it tends to mark unrelated-but-confident answers as correct. ALWAYS
+    # supply ground_truth here for benchmarks that have one.
+    if ground_truth is not None and ground_truth != '':
+        eval_prompt = f"""You are an evaluator for a web agent benchmark. Compare the agent's answer to the ground-truth answer and decide if the agent answered correctly.
+
+Task: {task}
+
+Ground truth answer: {ground_truth}
+
+Agent's answer: {prediction}
+
+The agent is correct ONLY if its answer matches the ground truth in substance. Allow for surface differences:
+- different formatting of the same value (e.g. "1988-1996" vs "1988-96", "Auxerre" vs "AJ Auxerre")
+- synonyms / abbreviations (e.g. "USA" vs "United States")
+- extra phrasing if the core fact matches
+
+Mark INCORRECT if:
+- the agent named a different person/place/thing
+- the agent gave a related but different fact
+- the agent's answer is missing a required component (e.g. only first name when both are needed)
+
+Respond with a JSON object:
+{{"correct": true/false, "reasoning": "brief explanation citing both values"}}
+
+Output only the JSON, nothing else."""
+    else:
+        eval_prompt = f"""You are an evaluator for a web agent benchmark. The agent was given a task and produced an answer.
 Your job is to determine if the agent's answer correctly and completely addresses the task.
 
 Task: {task}
@@ -346,8 +374,15 @@ async def agentic_loop(sem, data, messages, client, lock):
                             else:
                                 termination = 'answer'
                         else:
-                            print(f"[eval] Running semantic evaluation for task: {task_id}")
-                            is_correct, eval_reasoning = await evaluate_answer_with_llm(sem, task, prediction)
+                            # Pass ground-truth answer when the dataset provides one
+                            # (browsecomp has `answer`; agent-eval without it lets the
+                            # judge LLM hallucinate matches).
+                            ground_truth = data.get('answer') or data.get('ground_truth') or None
+                            print(f"[eval] Running semantic evaluation for task: {task_id} "
+                                  f"(gt={'yes' if ground_truth else 'no'})")
+                            is_correct, eval_reasoning = await evaluate_answer_with_llm(
+                                sem, task, prediction, ground_truth=ground_truth
+                            )
                             termination = 'answer' if is_correct else 'answer_incorrect'
                             print(f"[eval] Result: {termination}, reasoning: {eval_reasoning}")
 
