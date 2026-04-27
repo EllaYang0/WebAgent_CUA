@@ -159,24 +159,29 @@ def non_repeating_prefix(msgs, tool_calls, max_dup_threshold=2):
 def build(run_id, model_prefix="google_gemini-3.1-pro-preview", use_truth=False):
     """If use_truth is True, prefer the *_truth.jsonl files produced by
     reeval_with_truth.py (ground-truth-aware judge). Falls back to the original
-    files when truth-files are missing."""
-    res_dir = os.path.join(ROOT, "results")
+    files when truth-files are missing.
+
+    Per-benchmark layout:
+        results/<run_id>/{success,failure,trajectory}.jsonl
+        results/<run_id>/{success,failure,trajectory}_truth.jsonl
+    """
+    res_dir = os.path.join(ROOT, "results", run_id)
     suffix = "_truth" if use_truth else ""
     out_dir = os.path.join(ROOT, "dataset", run_id + ("_truth" if use_truth else ""))
     os.makedirs(out_dir, exist_ok=True)
-    prefix = os.path.join(res_dir, f"{model_prefix}_results_{run_id}")
     # Allow falling back if a truth-suffixed file is missing
     def _pick(name):
-        cand = prefix + name + suffix + ".jsonl"
+        cand = os.path.join(res_dir, name + suffix + ".jsonl")
         if use_truth and not os.path.exists(cand):
-            print(f"[!] {cand} missing, falling back to {prefix + name + '.jsonl'}")
-            return prefix + name + ".jsonl"
+            fallback = os.path.join(res_dir, name + ".jsonl")
+            print(f"[!] {cand} missing, falling back to {fallback}")
+            return fallback
         return cand
-    trajs = load_jsonl(_pick("_trajectory"))
+    trajs = load_jsonl(_pick("trajectory"))
     fulls = {}
-    for r in load_jsonl(_pick("_success")):
+    for r in load_jsonl(_pick("success")):
         fulls[r.get("task_id")] = r
-    for r in load_jsonl(_pick("_failure")):
+    for r in load_jsonl(_pick("failure")):
         fulls[r.get("task_id")] = r
 
     bins = defaultdict(list)
@@ -241,9 +246,9 @@ def build(run_id, model_prefix="google_gemini-3.1-pro-preview", use_truth=False)
         "run_id": run_id,
         "model_prefix": model_prefix,
         "source_files": [
-            prefix + "_trajectory.jsonl",
-            prefix + "_success.jsonl",
-            prefix + "_failure.jsonl",
+            os.path.join(res_dir, "trajectory" + suffix + ".jsonl"),
+            os.path.join(res_dir, "success" + suffix + ".jsonl"),
+            os.path.join(res_dir, "failure" + suffix + ".jsonl"),
         ],
         "category_counts": dict(cat_counts),
         "files": {fname: file_map_inv(file_map, fname, cat_counts) for fname in set(file_map.values())},

@@ -429,10 +429,13 @@ async def main(sem, rollout_count, input_path, output_path):
     global tokenizer
     dataset = read_jsonl(input_path)
 
-    base = output_path.replace('.jsonl', '')
-    success_path    = base + '_success.jsonl'
-    failure_path    = base + '_failure.jsonl'
-    trajectory_path = base + '_trajectory.jsonl'
+    # Sibling paths inside the same per-benchmark directory:
+    #   results/<benchmark_name>/{success,failure,trajectory}.jsonl
+    out_dir = os.path.dirname(output_path) or "."
+    os.makedirs(out_dir, exist_ok=True)
+    success_path    = os.path.join(out_dir, "success.jsonl")
+    failure_path    = os.path.join(out_dir, "failure.jsonl")
+    trajectory_path = os.path.join(out_dir, "trajectory.jsonl")
 
     visited_counter = Counter()
     if os.path.exists(success_path):
@@ -514,7 +517,7 @@ if __name__ == '__main__':
     MAX_AGENT_LEN = 128 * 1024
     MAX_SINGLE_GEN_TOKENS = 8192
     MAX_SUMMARY_SHARD_LEN = 64 * 1024
-    benchmark_name = "browsecomp_first50"
+    benchmark_name = "wiki_2hop"
     MODEL_NAME = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
     MAX_WORKERS = 1
     sem = {
@@ -530,7 +533,14 @@ if __name__ == '__main__':
     os.environ["MODEL_NAME"] = MODEL_NAME
 
     input_path = f"./data/{benchmark_name}.jsonl"
-    output_path = f"./results/{MODEL_NAME.replace('/', '_')}_results_{benchmark_name}.jsonl"
+    # Each benchmark gets its own results subfolder so files don't accumulate flat:
+    #   results/<benchmark_name>/{success,failure,trajectory}.jsonl
+    # main() derives success_path / failure_path / trajectory_path from output_path
+    # by replacing ".jsonl" with "_<kind>.jsonl", so we point output_path at
+    # results/<benchmark_name>/results.jsonl which yields the right names.
+    out_dir = f"./results/{benchmark_name}"
+    os.makedirs(out_dir, exist_ok=True)
+    output_path = f"{out_dir}/results.jsonl"
 
     search = Search()
     visit = Visit()

@@ -5,17 +5,17 @@ many false positives (mark "AC Milan and Club Olimpia" correct when truth was
 "Ireland v Romania", etc.). This script does NOT rerun the agent — just
 re-evaluates the saved predictions with a ground-truth-aware judge.
 
-Reads:
-  data/<bench>.jsonl                                 — task definitions w/ answer
-  results/<model>_results_<bench>_success.jsonl      — currently-marked successes
-  results/<model>_results_<bench>_failure.jsonl      — currently-marked failures
-  results/<model>_results_<bench>_trajectory.jsonl   — termination overview
+Reads (per-benchmark layout):
+  data/<bench>.jsonl                       — task definitions w/ answer
+  results/<bench>/success.jsonl            — currently-marked successes
+  results/<bench>/failure.jsonl            — currently-marked failures
+  results/<bench>/trajectory.jsonl         — termination overview
 
 Writes:
-  results/<model>_results_<bench>_success_truth.jsonl
-  results/<model>_results_<bench>_failure_truth.jsonl
-  results/<model>_results_<bench>_trajectory_truth.jsonl
-  results/<model>_results_<bench>_reeval_truth_audit.csv
+  results/<bench>/success_truth.jsonl
+  results/<bench>/failure_truth.jsonl
+  results/<bench>/trajectory_truth.jsonl
+  results/<bench>/reeval_truth_audit.csv
 
 Usage:
     python scripts/reeval_with_truth.py browsecomp_first50
@@ -48,11 +48,11 @@ async def reeval(run_id, model_prefix="google_gemini-3.1-pro-preview"):
         truths[tid] = d.get("answer") or d.get("ground_truth") or ""
         tasks[tid] = d.get("task") or d.get("question") or ""
 
-    res_dir = ROOT / "results"
-    prefix = res_dir / f"{model_prefix}_results_{run_id}"
-    succ_in = list(open(str(prefix) + "_success.jsonl")) if (prefix.parent / (prefix.name + "_success.jsonl")).exists() else []
-    fail_in = list(open(str(prefix) + "_failure.jsonl")) if (prefix.parent / (prefix.name + "_failure.jsonl")).exists() else []
-    traj_in = list(open(str(prefix) + "_trajectory.jsonl")) if (prefix.parent / (prefix.name + "_trajectory.jsonl")).exists() else []
+    res_dir = ROOT / "results" / run_id
+    res_dir.mkdir(parents=True, exist_ok=True)
+    succ_in = list(open(str(res_dir / "success.jsonl"))) if (res_dir / "success.jsonl").exists() else []
+    fail_in = list(open(str(res_dir / "failure.jsonl"))) if (res_dir / "failure.jsonl").exists() else []
+    traj_in = list(open(str(res_dir / "trajectory.jsonl"))) if (res_dir / "trajectory.jsonl").exists() else []
 
     succ_recs = [json.loads(l) for l in succ_in]
     fail_recs = [json.loads(l) for l in fail_in]
@@ -136,18 +136,17 @@ async def reeval(run_id, model_prefix="google_gemini-3.1-pro-preview"):
             r2["eval_reasoning"] = new_reason.get(tid) or r.get("eval_reasoning")
         new_traj.append(r2)
 
-    # Write outputs
-    base = str(prefix)
-    with open(base + "_success_truth.jsonl", "w") as f:
+    # Write outputs into the same per-benchmark directory.
+    with open(str(res_dir / "success_truth.jsonl"), "w") as f:
         for r in new_succ:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    with open(base + "_failure_truth.jsonl", "w") as f:
+    with open(str(res_dir / "failure_truth.jsonl"), "w") as f:
         for r in new_fail:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    with open(base + "_trajectory_truth.jsonl", "w") as f:
+    with open(str(res_dir / "trajectory_truth.jsonl"), "w") as f:
         for r in new_traj:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    with open(base + "_reeval_truth_audit.csv", "w", newline="") as f:
+    with open(str(res_dir / "reeval_truth_audit.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=[
             "task_id", "task", "prediction", "ground_truth",
             "old_termination", "old_reasoning",
@@ -180,10 +179,10 @@ async def reeval(run_id, model_prefix="google_gemini-3.1-pro-preview"):
     print(f"  flipped incorrect -> success:        {flipped_to_succ}")
     print(f"  records skipped (no pred/non-eval):  {len(skipped)}")
     print()
-    print(f"  audit CSV:    {base}_reeval_truth_audit.csv")
-    print(f"  new success:  {base}_success_truth.jsonl")
-    print(f"  new failure:  {base}_failure_truth.jsonl")
-    print(f"  new traj:     {base}_trajectory_truth.jsonl")
+    print(f"  audit CSV:    {res_dir / 'reeval_truth_audit.csv'}")
+    print(f"  new success:  {res_dir / 'success_truth.jsonl'}")
+    print(f"  new failure:  {res_dir / 'failure_truth.jsonl'}")
+    print(f"  new traj:     {res_dir / 'trajectory_truth.jsonl'}")
 
 
 if __name__ == "__main__":
