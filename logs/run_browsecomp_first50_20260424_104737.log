@@ -1,0 +1,1954 @@
+Total number of tasks: 50
+Navi-Bench Rollout ...:   0%|          | 0/50 [00:00<?, ?it/s]/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/auth/_default.py:114: UserWarning: Your application has authenticated using end user credentials from Google Cloud SDK without a quota project. You might receive a "quota exceeded" or "API not enabled" error. See the following page for troubleshooting: https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds. 
+  warnings.warn(_CLOUD_SDK_CREDENTIALS_WARNING)
+Navi-Bench Rollout ...:   2%|▏         | 1/50 [00:00<00:38,  1.29it/s]Navi-Bench Rollout ...:   4%|▍         | 2/50 [00:01<00:23,  2.04it/s]Navi-Bench Rollout ...:   6%|▌         | 3/50 [00:01<00:18,  2.52it/s]initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=11
+[agentic_loop] no start_url for task_id=11; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=21
+[agentic_loop] no start_url for task_id=21; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=27
+[agentic_loop] no start_url for task_id=27; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=NoneNavi-Bench Rollout ...:   8%|▊         | 4/50 [00:01<00:16,  2.87it/s]Navi-Bench Rollout ...:  10%|█         | 5/50 [00:01<00:14,  3.11it/s]Navi-Bench Rollout ...:  12%|█▏        | 6/50 [00:02<00:13,  3.16it/s]
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=23
+[agentic_loop] no start_url for task_id=23; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=18
+[agentic_loop] no start_url for task_id=18; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=10
+[agentic_loop] no start_url for task_id=10; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']Navi-Bench Rollout ...:  14%|█▍        | 7/50 [00:02<00:12,  3.34it/s]Navi-Bench Rollout ...:  16%|█▌        | 8/50 [00:02<00:12,  3.46it/s]Navi-Bench Rollout ...:  18%|█▊        | 9/50 [00:03<00:12,  3.39it/s]
+[agentic_loop] reset browser to about:blank for task_id=49
+[agentic_loop] no start_url for task_id=49; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=45
+[agentic_loop] no start_url for task_id=45; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=40
+[agentic_loop] no start_url for task_id=40; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=2
+[agentic_loop] no start_url for task_id=2; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+Navi-Bench Rollout ...:  20%|██        | 10/50 [00:03<00:11,  3.37it/s]Navi-Bench Rollout ...:  22%|██▏       | 11/50 [00:03<00:12,  3.21it/s]Navi-Bench Rollout ...:  24%|██▍       | 12/50 [00:04<00:12,  3.14it/s]Navi-Bench Rollout ...:  26%|██▌       | 13/50 [00:04<00:11,  3.19it/s]
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=36
+[agentic_loop] no start_url for task_id=36; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=15
+[agentic_loop] no start_url for task_id=15; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=7
+[agentic_loop] no start_url for task_id=7; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=NoneNavi-Bench Rollout ...:  28%|██▊       | 14/50 [00:04<00:11,  3.24it/s]Navi-Bench Rollout ...:  30%|███       | 15/50 [00:04<00:10,  3.28it/s]Navi-Bench Rollout ...:  32%|███▏      | 16/50 [00:05<00:10,  3.23it/s]
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=32
+[agentic_loop] no start_url for task_id=32; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=28
+[agentic_loop] no start_url for task_id=28; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=0
+[agentic_loop] no start_url for task_id=0; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']Navi-Bench Rollout ...:  34%|███▍      | 17/50 [00:05<00:10,  3.23it/s]Navi-Bench Rollout ...:  36%|███▌      | 18/50 [00:05<00:10,  3.12it/s]Navi-Bench Rollout ...:  38%|███▊      | 19/50 [00:06<00:10,  2.89it/s]
+[agentic_loop] reset browser to about:blank for task_id=24
+[agentic_loop] no start_url for task_id=24; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=12
+[agentic_loop] no start_url for task_id=12; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=43
+[agentic_loop] no start_url for task_id=43; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=19
+[agentic_loop] no start_url for task_id=19; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+Navi-Bench Rollout ...:  40%|████      | 20/50 [00:06<00:09,  3.05it/s]Navi-Bench Rollout ...:  42%|████▏     | 21/50 [00:06<00:09,  3.16it/s]Navi-Bench Rollout ...:  44%|████▍     | 22/50 [00:07<00:08,  3.24it/s]Navi-Bench Rollout ...:  46%|████▌     | 23/50 [00:07<00:08,  3.28it/s]
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=46
+[agentic_loop] no start_url for task_id=46; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=41
+[agentic_loop] no start_url for task_id=41; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=37
+[agentic_loop] no start_url for task_id=37; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=NoneNavi-Bench Rollout ...:  48%|████▊     | 24/50 [00:07<00:07,  3.26it/s]Navi-Bench Rollout ...:  50%|█████     | 25/50 [00:08<00:07,  3.32it/s]Navi-Bench Rollout ...:  52%|█████▏    | 26/50 [00:08<00:07,  3.35it/s]
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=33
+[agentic_loop] no start_url for task_id=33; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=3
+[agentic_loop] no start_url for task_id=3; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=16
+[agentic_loop] no start_url for task_id=16; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']Navi-Bench Rollout ...:  54%|█████▍    | 27/50 [00:08<00:07,  3.22it/s]Navi-Bench Rollout ...:  56%|█████▌    | 28/50 [00:08<00:06,  3.26it/s]Navi-Bench Rollout ...:  58%|█████▊    | 29/50 [00:09<00:06,  3.17it/s]
+[agentic_loop] reset browser to about:blank for task_id=8
+[agentic_loop] no start_url for task_id=8; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=29
+[agentic_loop] no start_url for task_id=29; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=25
+[agentic_loop] no start_url for task_id=25; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=13
+[agentic_loop] no start_url for task_id=13; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+Navi-Bench Rollout ...:  60%|██████    | 30/50 [00:09<00:06,  3.21it/s]Navi-Bench Rollout ...:  62%|██████▏   | 31/50 [00:09<00:06,  3.15it/s]Navi-Bench Rollout ...:  64%|██████▍   | 32/50 [00:10<00:05,  3.24it/s]Navi-Bench Rollout ...:  66%|██████▌   | 33/50 [00:10<00:05,  3.16it/s]
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=5
+[agentic_loop] no start_url for task_id=5; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=47
+[agentic_loop] no start_url for task_id=47; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=42
+[agentic_loop] no start_url for task_id=42; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=NoneNavi-Bench Rollout ...:  68%|██████▊   | 34/50 [00:10<00:05,  3.17it/s]Navi-Bench Rollout ...:  70%|███████   | 35/50 [00:11<00:05,  2.95it/s]Navi-Bench Rollout ...:  72%|███████▏  | 36/50 [00:11<00:04,  3.04it/s]
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=38
+[agentic_loop] no start_url for task_id=38; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=1
+[agentic_loop] no start_url for task_id=1; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=34
+[agentic_loop] no start_url for task_id=34; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']Navi-Bench Rollout ...:  74%|███████▍  | 37/50 [00:11<00:04,  3.11it/s]Navi-Bench Rollout ...:  76%|███████▌  | 38/50 [00:12<00:03,  3.18it/s]Navi-Bench Rollout ...:  78%|███████▊  | 39/50 [00:12<00:03,  3.13it/s]
+[agentic_loop] reset browser to about:blank for task_id=30
+[agentic_loop] no start_url for task_id=30; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=4
+[agentic_loop] no start_url for task_id=4; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=20
+[agentic_loop] no start_url for task_id=20; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=26
+[agentic_loop] no start_url for task_id=26; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+Navi-Bench Rollout ...:  80%|████████  | 40/50 [00:12<00:03,  3.20it/s]Navi-Bench Rollout ...:  82%|████████▏ | 41/50 [00:13<00:02,  3.23it/s]Navi-Bench Rollout ...:  84%|████████▍ | 42/50 [00:13<00:02,  3.15it/s]Navi-Bench Rollout ...:  86%|████████▌ | 43/50 [00:13<00:02,  3.16it/s]
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=17
+[agentic_loop] no start_url for task_id=17; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=9
+[agentic_loop] no start_url for task_id=9; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=22
+[agentic_loop] no start_url for task_id=22; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=NoneNavi-Bench Rollout ...:  88%|████████▊ | 44/50 [00:14<00:01,  3.06it/s]Navi-Bench Rollout ...:  90%|█████████ | 45/50 [00:14<00:01,  3.10it/s]Navi-Bench Rollout ...:  92%|█████████▏| 46/50 [00:14<00:01,  3.11it/s]
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=48
+[agentic_loop] no start_url for task_id=48; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=14
+[agentic_loop] no start_url for task_id=14; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=6
+[agentic_loop] no start_url for task_id=6; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']Navi-Bench Rollout ...:  94%|█████████▍| 47/50 [00:15<00:00,  3.11it/s]Navi-Bench Rollout ...:  96%|█████████▌| 48/50 [00:15<00:00,  3.13it/s]Navi-Bench Rollout ...:  98%|█████████▊| 49/50 [00:15<00:00,  2.93it/s]
+[agentic_loop] reset browser to about:blank for task_id=39
+[agentic_loop] no start_url for task_id=39; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=44
+[agentic_loop] no start_url for task_id=44; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=35
+[agentic_loop] no start_url for task_id=35; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+[agentic_loop] reset browser to about:blank for task_id=31
+[agentic_loop] no start_url for task_id=31; skipping init visit
+MCPClient: Ping task was cancelled.
+[ERROR]: ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 431, in main
+    result = await future
+             ^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 144, in agentic_loop
+    async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py", line 17, in mcp_client
+    async with sse_client(url=server_url, headers={
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "ROUTE-KEY": str(uuid.uuid4())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        }) as streams:
+        ^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+    await self.gen.athrow(value)
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/mcp/client/sse.py", line 63, in sse_client
+    async with anyio.create_task_group() as tg:
+               ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 783, in __aexit__
+    raise BaseExceptionGroup(
+        "unhandled errors in a TaskGroup", self._exceptions
+    ) from None
+Navi-Bench Rollout ...: 100%|██████████| 50/50 [00:16<00:00,  3.12it/s]Navi-Bench Rollout ...: 100%|██████████| 50/50 [00:16<00:00,  3.11it/s]
+

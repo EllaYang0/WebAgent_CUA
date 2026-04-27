@@ -1,0 +1,59 @@
+{
+  "run_id": "browsecomp_first50",
+  "model_prefix": "google_gemini-3.1-pro-preview",
+  "source_files": [
+    "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/browsecomp_first50/trajectory_truth.jsonl",
+    "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/browsecomp_first50/success_truth.jsonl",
+    "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/browsecomp_first50/failure_truth.jsonl"
+  ],
+  "category_counts": {
+    "A2_messy_success": 12,
+    "B2_quick_wrong": 7,
+    "C_stuck_loop": 6,
+    "B_real_attempt_wrong": 12,
+    "D_dead_at_start": 1,
+    "D2_dead_mid_run": 9,
+    "A_clean_success": 3
+  },
+  "files": {
+    "rerank_negative_hard.jsonl": {
+      "categories": [
+        "B_real_attempt_wrong"
+      ],
+      "count": 12
+    },
+    "discarded.jsonl": {
+      "categories": [
+        "D_dead_at_start",
+        "Z_unknown"
+      ],
+      "count": 1
+    },
+    "sft_positive_clean.jsonl": {
+      "categories": [
+        "A_clean_success"
+      ],
+      "count": 3
+    },
+    "sft_positive_messy.jsonl": {
+      "categories": [
+        "A2_messy_success"
+      ],
+      "count": 12
+    },
+    "bfs_prefix.jsonl": {
+      "categories": [
+        "C_stuck_loop",
+        "C2_explored_long",
+        "D2_dead_mid_run"
+      ],
+      "count": 15
+    },
+    "rerank_negative_quick.jsonl": {
+      "categories": [
+        "B2_quick_wrong"
+      ],
+      "count": 7
+    }
+  }
+}

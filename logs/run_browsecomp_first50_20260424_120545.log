@@ -1,0 +1,18 @@
+Total number of tasks: 50
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+Navi-Bench Rollout ...:   0%|          | 0/50 [00:00<?, ?it/s][agentic_loop] reset browser to about:blank for task_id=0
+[agentic_loop] no start_url for task_id=0; skipping init visit
+[agentic_loop] task_id=0 entering main turn loop with 2 record messages
+[agentic_loop] task_id=0 turn=0
+[agentic_loop] task_id=0 turn=0 response_len=1205
+Navi-Bench Rollout ...:   2%|▏         | 1/50 [00:41<34:14, 41.93s/it][eval] Running semantic evaluation for task: 0
+[eval] Result: answer_incorrect, reasoning: JSON parse failed, fallback: {"correct": true, "reasoning": "The agent correctly identified the author as Ken Wal
+[agentic_loop] reset browser to about:blank for task_id=1
+[agentic_loop] no start_url for task_id=1; skipping init visit
+[agentic_loop] task_id=1 entering main turn loop with 2 record messages
+[agentic_loop] task_id=1 turn=0
