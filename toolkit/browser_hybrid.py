@@ -1,5 +1,6 @@
 import os
 import re
+import ast
 import time
 import json
 import yaml
@@ -128,6 +129,107 @@ Nothing else, no explanation."""
     return None, None
 
 
+def _extract_balanced_brace_block(s, start_idx=0):
+    """从 start_idx 开始扫描，返回**第一个完整、平衡**的 {...} 块（处理嵌套、字符串内的花括号）。
+    没有就返回 None。比贪婪正则 `\\{.*\\}` 安全得多——后者会把 markdown 里的 JS 代码块也吃进来。"""
+    n = len(s)
+    i = start_idx
+    while i < n and s[i] != '{':
+        i += 1
+    if i >= n:
+        return None
+    depth = 0
+    in_str = None  # 当前字符串引号: '"' / "'" / None
+    esc = False
+    j = i
+    while j < n:
+        ch = s[j]
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == '\\':
+                esc = True
+            elif ch == in_str:
+                in_str = None
+        else:
+            if ch == '"' or ch == "'":
+                in_str = ch
+            elif ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth == 0:
+                    return s[i:j+1]
+        j += 1
+    return None
+
+
+def _parse_dom_focus_payload(text):
+    """Playwright MCP 1.60+ 的 browser_evaluate 把返回值渲染在 `### Result` 段下面，后面紧跟
+    `### Ran Playwright code` markdown 代码块（里面也有 `{...}`）和 `### Page` 段。
+    旧实现用 `re.search(r'\\{.*\\}', text, re.DOTALL)` 贪婪匹配从第一个 `{` 一路吃到最后一个
+    `}`，把 JS 源码也卷进来导致 25 次 parse_failed。
+
+    新实现：先锚定 `### Result`（如果有就跳到它后面），再用 _extract_balanced_brace_block
+    取第一个**平衡**的 {...} 块；解析按 4 档 fallback 走（JSON → ast.literal_eval → bare-key
+    quoting → 双层 unescape）。"""
+    if not text:
+        return None
+
+    # 优先以 `### Result` 作锚点
+    anchor = re.search(r'###\s*Result\b', text)
+    start = anchor.end() if anchor else 0
+    raw = _extract_balanced_brace_block(text, start)
+    if raw is None:
+        # 退回老路径：从全文找平衡块
+        raw = _extract_balanced_brace_block(text, 0)
+    if raw is None:
+        return None
+
+    # 1) 直接 JSON
+    try:
+        obj = json.loads(raw)
+        if isinstance(obj, str):
+            obj = json.loads(obj)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        pass
+
+    # 2) Python literal (单引号 dict / True/False/None)
+    try:
+        obj = ast.literal_eval(raw)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        pass
+
+    # 3) JS 对象字面量 → 把 bare key 加引号，再尝试 JSON
+    #    {focused: true, tag: 'INPUT'}  →  {"focused": true, "tag": "INPUT"}
+    try:
+        quoted = re.sub(r'([\{,]\s*)([A-Za-z_$][\w$]*)\s*:', r'\1"\2":', raw)
+        # 把单引号字符串改成双引号 (粗糙但够用：键已经被双引号化了)
+        quoted = re.sub(r"'([^'\\]*(?:\\.[^'\\]*)*)'", r'"\1"', quoted)
+        obj = json.loads(quoted)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        pass
+
+    # 4) 双层转义：把 \" 还原成 " 再 JSON
+    try:
+        unescaped = raw.encode('utf-8').decode('unicode_escape')
+        m2 = re.search(r'\{.*\}', unescaped, re.DOTALL)
+        if m2:
+            obj = json.loads(m2.group())
+            if isinstance(obj, dict):
+                return obj
+    except Exception:
+        pass
+
+    return None
+
+
 async def check_dom_focus(client, lock):
     """用 Playwright MCP 的 browser_evaluate 查 document.activeElement。
     会穿透 iframe 和 shadow DOM，并等一小段时间让 focus/导航稳定。
@@ -137,6 +239,9 @@ async def check_dom_focus(client, lock):
     if client is None or lock is None:
         return None
     try:
+        # JS 直接 return 对象 — 不再 JSON.stringify。
+        # 原因：MCP 把 string 返回值渲染成无引号的 JS-object 字面量 (导致 char-1 JSONDecodeError)。
+        # 让 Python 端的 _parse_dom_focus_payload 兼容多种格式即可。
         js_code = """async () => {
             const deadline = Date.now() + 1500;
             while (document.readyState !== 'complete' && Date.now() < deadline) {
@@ -153,14 +258,14 @@ async def check_dom_focus(client, lock):
                 }
                 break;
             }
-            if (!el) return JSON.stringify({focused: false, tag: 'none', readyState: document.readyState});
+            if (!el) return {focused: false, tag: 'none', readyState: document.readyState};
             const interactive = ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(el.tagName) || el.isContentEditable;
             let editableText = '';
             if (el.isContentEditable) editableText = (el.innerText || el.textContent || '').substring(0, 200);
             else if ('value' in el) editableText = (el.value || '').substring(0, 200);
             const signature = el.tagName + '#' + (el.id || '') + '.' + (el.className || '').toString().substring(0, 40)
                                + '@' + (el.getAttribute('name') || '') + ':' + (el.textContent || '').trim().substring(0, 40);
-            return JSON.stringify({
+            return {
                 focused: el !== document.body && el.tagName !== 'HTML',
                 tag: el.tagName,
                 type: el.type || '',
@@ -173,7 +278,7 @@ async def check_dom_focus(client, lock):
                 signature: signature,
                 url: document.location.href,
                 readyState: document.readyState
-            });
+            };
         }"""
         async with lock:
             resp = await client.call_tool('browser_evaluate', {'function': js_code})
@@ -181,12 +286,10 @@ async def check_dom_focus(client, lock):
         if not content:
             return None
         text = getattr(content[0], 'text', None)
-        if not text:
-            return None
-        match = re.search(r'\{.*\}', text, re.DOTALL)
-        if not match:
-            return None
-        return json.loads(match.group())
+        obj = _parse_dom_focus_payload(text)
+        if obj is None:
+            print(f"[check_dom_focus] parse failed; text head: {(text or '')[:200]!r}")
+        return obj
     except Exception as e:
         print(f"[check_dom_focus] error: {repr(e)}")
         return None
@@ -221,21 +324,32 @@ def judge_click_by_dom(dom_focus, prev_focus=None):
 
 def judge_fill_by_dom(dom_focus, expected_text):
     """Fill 的 DOM 判定。返回 (decided, success, reason)。
-    对 INPUT/TEXTAREA 读 .value；对 contenteditable 读 innerText；都是 ground truth。
+    设计原则：只判 **明确成功**，不轻易判失败。
+    - 焦点元素是 INPUT / TEXTAREA / contentEditable，且 value/innerText 与 expected 双向 substring 命中
+      → (True, True, ...) 明确成功
+    - 其它一切（无焦点信息、焦点不在可编辑元素、value 不匹配、value 为空等）
+      → (False, False, ...) **uncertain**，交给视觉/上层处理，**不再单独判失败**
+    这样可以避免 autocomplete 吞输入、格式化值（日期 / 数字 / 缩写）、focus 跑到 dropdown
+    等场景被 DOM 单方面误杀，进而触发破坏性 retry。
     """
     if not dom_focus:
         return False, False, "no DOM focus info"
     tag = (dom_focus.get('tag') or '').upper()
     expected = (expected_text or '').strip()
+    if not expected:
+        return False, False, "no expected text to verify"
     is_editable = tag in ('INPUT', 'TEXTAREA') or dom_focus.get('isContentEditable')
-    if is_editable:
-        editable_text = dom_focus.get('editableText') or dom_focus.get('value') or ''
-        if expected and expected.lower() in editable_text.lower():
-            return True, True, f"{tag} text contains expected"
-        if not editable_text.strip():
-            return True, False, f"{tag} is empty"
-        return True, False, f"{tag}='{editable_text[:60]}' missing expected"
-    return False, False, f"DOM focus on {tag or 'none'}, not editable"
+    if not is_editable:
+        return False, False, f"DOM focus on {tag or 'none'}, not editable, inconclusive"
+    editable_text = (dom_focus.get('editableText') or dom_focus.get('value') or '').strip()
+    if not editable_text:
+        return False, False, f"{tag} value empty, inconclusive (autocomplete may have consumed input)"
+    e_low = expected.lower()
+    a_low = editable_text.lower()
+    # 双向 substring：处理 "SFO"→"San Francisco (SFO)" 与 "San Francisco"→"SFO" 这类规范化场景
+    if e_low in a_low or a_low in e_low:
+        return True, True, f"{tag} value '{editable_text[:60]}' matches expected"
+    return False, False, f"{tag}='{editable_text[:60]}' inconclusive vs '{expected[:40]}'"
 
 
 async def verify_action(screenshot_b64, action_description, expected_result, sem, dom_evidence=None):
@@ -419,12 +533,29 @@ async def visual_click(ref, goal, sem, client=None, lock=None):
 
 
 async def visual_fill(ref, text, sem, client=None, lock=None):
-    """视觉兜底：截图 → Gemini 找坐标 → 输入文字，带重试。
-    - DOM 判定：INPUT/TEXTAREA 读 .value，contenteditable 读 innerText，任一包含 expected 即 ground truth 级的成功
-    - DOM 不确定才走视觉判，并把 DOM 证据一起传给 Gemini
-    - 所有重试失败时返回 False（不再掩盖失败），让上层 Fill.call 报错给 agent
+    """视觉兜底：截图 → Gemini 找坐标 → 输入文字。
+    新行为契约（按用户要求）：
+      - DOM 判定只承认"明确成功"；其余一切（含 value 不匹配、为空、focus 跑了）一律 uncertain
+      - **DOM uncertain 时不再触发 ctrl+a/delete 这种破坏性 retry**，避免误杀已正确填好的值
+      - 重试只发生在以下两种"无破坏"情形：
+            1) Gemini 找不到坐标（还没开始打字）
+            2) 视觉判定 success=False **且** Gemini 给出的失败原因属于"明确强信号"
+               （例如 'no input field is visible'）—— 这种情况下重新选坐标再点击+输入
+      - DOM uncertain + 视觉 uncertain → 直接返回 True (best-effort)；
+        page snapshot 是上层 Fill.call 紧接着会读的 ground truth，由 agent 自己看真相再决定下一步
+      - 完全找不到坐标 / 一次都没成功打字 → 返回 False，上层报错给 agent
     """
     tried_coords = []
+    typed_at_least_once = False
+    last_inconclusive_reason = None
+
+    # 视觉判失败的"强信号"关键词：明显说没找到输入框 / 输入区域不可见
+    STRONG_FAIL_KEYWORDS = (
+        'no input field', 'input field is not', 'input is not visible',
+        'no visible input', 'no editable', 'no text field',
+        'taskbar', 'search box at the bottom',  # 误打到 Windows taskbar
+    )
+
     for attempt in range(1, MAX_RETRIES + 1):
         print(f"[visual_fill] Attempt {attempt}/{MAX_RETRIES}")
 
@@ -445,74 +576,86 @@ async def visual_fill(ref, text, sem, client=None, lock=None):
             f"input field with ref={ref}, fill with text: {text}.{avoid}",
             sem
         )
-        if x is None:
+        if x is None or y is None:
             print(f"[visual_fill] Attempt {attempt}: could not find coordinates")
             if attempt == MAX_RETRIES:
-                return False
+                # 一次坐标都没找到 → 真失败
+                if not typed_at_least_once:
+                    return False
+                # 之前打过，本次只是没找到新坐标 → 不算硬失败
+                print("[visual_fill] returning best-effort True (typed earlier, no new coords)")
+                return True
             await asyncio.sleep(1)
             continue
-        tried_coords.append((int(x), int(y)))
+
+        ix, iy = int(x), int(y)
+        tried_coords.append((ix, iy))
 
         resp = requests.post(
             f"{WINDOWS_MCP_URL}/tools/type",
-            json={"loc": [int(x), int(y)], "text": text},
+            json={"loc": [ix, iy], "text": text},
             timeout=120
         )
-        print(f"[visual_fill] filled at ({x}, {y})")
+        typed_at_least_once = True
+        print(f"[visual_fill] filled at ({ix}, {iy})")
         print(f"[visual_fill] type response: {resp.json()}")
         await asyncio.sleep(0.6)
 
-        # ① DOM 判定
+        # ① DOM 判定（新版 judge_fill_by_dom 只输出 success / uncertain）
         dom_focus = await check_dom_focus(client, lock)
         if dom_focus is not None:
             editable = dom_focus.get('editableText') or dom_focus.get('value') or ''
             print(f"[visual_fill] DOM focus: tag={dom_focus.get('tag')} "
                   f"editable='{editable[:80]}'")
+        else:
+            print(f"[visual_fill] DOM focus: <unavailable>")
         decided, dom_success, dom_reason = judge_fill_by_dom(dom_focus, text)
 
-        if decided:
-            success, reason = dom_success, f"DOM: {dom_reason}"
-        else:
-            # ② DOM 不确定（焦点跑到别处 / 未知元素），走视觉判 + DOM 证据
-            verify_response = requests.post(
-                f"{WINDOWS_MCP_URL}/tools/state",
-                json={"use_vision": True},
-                timeout=120
-            )
-            verify_screenshot = verify_response.json()["result"]["screenshot"]
-            visual_success, visual_reason = await verify_action(
-                verify_screenshot,
-                f"Typed '{text}' into input field [ref={ref}] at ({x}, {y})",
-                f"The text '{text}' should be visible in the input field",
-                sem,
-                dom_evidence=dom_focus
-            )
-            success = visual_success
-            reason = f"visual+dom: {visual_reason} | {dom_reason}"
-
-        if success:
-            print(f"[visual_fill] Verification passed ({reason})")
+        if decided and dom_success:
+            print(f"[visual_fill] DOM confirmed success ({dom_reason})")
             return True
-        else:
-            print(f"[visual_fill] Verification failed ({reason})")
-            if attempt < MAX_RETRIES:
-                print("[visual_fill] Clearing previous input before retry...")
-                requests.post(
-                    f"{WINDOWS_MCP_URL}/tools/hotkey",
-                    json={"keys": ["ctrl", "a"]},
-                    timeout=30
-                )
-                await asyncio.sleep(0.3)
-                requests.post(
-                    f"{WINDOWS_MCP_URL}/tools/hotkey",
-                    json={"keys": ["delete"]},
-                    timeout=30
-                )
-                await asyncio.sleep(0.5)
-            else:
-                print(f"[visual_fill] All attempts failed")
-                return False
 
+        # ② DOM uncertain → 视觉判 + DOM 证据
+        verify_response = requests.post(
+            f"{WINDOWS_MCP_URL}/tools/state",
+            json={"use_vision": True},
+            timeout=120
+        )
+        verify_screenshot = verify_response.json()["result"]["screenshot"]
+        visual_success, visual_reason = await verify_action(
+            verify_screenshot,
+            f"Typed '{text}' into input field [ref={ref}] at ({ix}, {iy})",
+            f"The text '{text}' should be visible in the input field",
+            sem,
+            dom_evidence=dom_focus
+        )
+
+        if visual_success:
+            print(f"[visual_fill] Visual confirmed success ({visual_reason})")
+            return True
+
+        # ③ 视觉说失败 + DOM uncertain。判断是不是"强信号"失败
+        reason_lo = (visual_reason or '').lower()
+        is_strong_fail = any(kw in reason_lo for kw in STRONG_FAIL_KEYWORDS)
+        last_inconclusive_reason = f"visual: {visual_reason} | dom: {dom_reason}"
+
+        if is_strong_fail and attempt < MAX_RETRIES:
+            # 强信号失败：可以再选个坐标试一次，但 **不做 ctrl+a/delete**
+            # 直接重新 find_coordinates → click+type；如果原字段已经有错的输入，
+            # OS 级 type 会先 click 再打，足以把焦点切到新位置 / 新字段。
+            print(f"[visual_fill] Strong-signal failure, retrying without destructive clear ({last_inconclusive_reason})")
+            await asyncio.sleep(1)
+            continue
+
+        # uncertain (DOM uncertain + 视觉 uncertain/弱失败) → best-effort 返回 True
+        print(f"[visual_fill] Inconclusive ({last_inconclusive_reason}); "
+              f"returning best-effort True without destructive retry — "
+              f"agent will read the next snapshot to verify")
+        return True
+
+    # 极端兜底：循环退出但既没明确成功也没明确失败
+    if typed_at_least_once:
+        return True
     return False
 
 

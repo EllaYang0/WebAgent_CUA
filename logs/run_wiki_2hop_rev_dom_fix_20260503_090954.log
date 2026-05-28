@@ -1,0 +1,942 @@
+Total number of tasks: 29
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+Navi-Bench Rollout ...:   0%|          | 0/29 [00:00<?, ?it/s][agentic_loop] reset browser to about:blank for task_id=ae99d7d2-7df3-405d-8c34-ead5842fb646
+[agentic_loop] no start_url for task_id=ae99d7d2-7df3-405d-8c34-ead5842fb646; skipping init visit
+[agentic_loop] task_id=ae99d7d2-7df3-405d-8c34-ead5842fb646 entering main turn loop with 2 record messages
+[agentic_loop] task_id=ae99d7d2-7df3-405d-8c34-ead5842fb646 turn=0
+/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/auth/_default.py:114: UserWarning: Your application has authenticated using end user credentials from Google Cloud SDK without a quota project. You might receive a "quota exceeded" or "API not enabled" error. See the following page for troubleshooting: https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds. 
+  warnings.warn(_CLOUD_SDK_CREDENTIALS_WARNING)
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:   3%|▎         | 1/29 [00:00<00:20,  1.34it/s][agentic_loop] reset browser to about:blank for task_id=c9fcc29e-4dc4-4914-8949-45d25880f114
+[agentic_loop] no start_url for task_id=c9fcc29e-4dc4-4914-8949-45d25880f114; skipping init visit
+[agentic_loop] task_id=c9fcc29e-4dc4-4914-8949-45d25880f114 entering main turn loop with 2 record messages
+[agentic_loop] task_id=c9fcc29e-4dc4-4914-8949-45d25880f114 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:   7%|▋         | 2/29 [00:00<00:10,  2.49it/s][agentic_loop] reset browser to about:blank for task_id=1976970c-bb18-4bb9-a4b0-b3f53d49976e
+[agentic_loop] no start_url for task_id=1976970c-bb18-4bb9-a4b0-b3f53d49976e; skipping init visit
+[agentic_loop] task_id=1976970c-bb18-4bb9-a4b0-b3f53d49976e entering main turn loop with 2 record messages
+[agentic_loop] task_id=1976970c-bb18-4bb9-a4b0-b3f53d49976e turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  10%|█         | 3/29 [00:01<00:07,  3.45it/s][agentic_loop] reset browser to about:blank for task_id=001f60ce-2fb6-47c4-a9c7-3911100ddaca
+[agentic_loop] no start_url for task_id=001f60ce-2fb6-47c4-a9c7-3911100ddaca; skipping init visit
+[agentic_loop] task_id=001f60ce-2fb6-47c4-a9c7-3911100ddaca entering main turn loop with 2 record messages
+[agentic_loop] task_id=001f60ce-2fb6-47c4-a9c7-3911100ddaca turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  14%|█▍        | 4/29 [00:01<00:05,  4.28it/s][agentic_loop] reset browser to about:blank for task_id=77938404-9542-484f-9cc5-c164968656cf
+[agentic_loop] no start_url for task_id=77938404-9542-484f-9cc5-c164968656cf; skipping init visit
+[agentic_loop] task_id=77938404-9542-484f-9cc5-c164968656cf entering main turn loop with 2 record messages
+[agentic_loop] task_id=77938404-9542-484f-9cc5-c164968656cf turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  17%|█▋        | 5/29 [00:01<00:04,  5.06it/s][agentic_loop] reset browser to about:blank for task_id=dc2487d1-cf1b-4b81-893c-6c4abdff8cfe
+[agentic_loop] no start_url for task_id=dc2487d1-cf1b-4b81-893c-6c4abdff8cfe; skipping init visit
+[agentic_loop] task_id=dc2487d1-cf1b-4b81-893c-6c4abdff8cfe entering main turn loop with 2 record messages
+[agentic_loop] task_id=dc2487d1-cf1b-4b81-893c-6c4abdff8cfe turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  21%|██        | 6/29 [00:01<00:04,  5.69it/s][agentic_loop] reset browser to about:blank for task_id=f185c8db-858d-478e-8f94-d0251559b037
+[agentic_loop] no start_url for task_id=f185c8db-858d-478e-8f94-d0251559b037; skipping init visit
+[agentic_loop] task_id=f185c8db-858d-478e-8f94-d0251559b037 entering main turn loop with 2 record messages
+[agentic_loop] task_id=f185c8db-858d-478e-8f94-d0251559b037 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  24%|██▍       | 7/29 [00:01<00:03,  6.31it/s][agentic_loop] reset browser to about:blank for task_id=b66ed427-6bb8-4a05-bc70-d1589e4d8fb0
+[agentic_loop] no start_url for task_id=b66ed427-6bb8-4a05-bc70-d1589e4d8fb0; skipping init visit
+[agentic_loop] task_id=b66ed427-6bb8-4a05-bc70-d1589e4d8fb0 entering main turn loop with 2 record messages
+[agentic_loop] task_id=b66ed427-6bb8-4a05-bc70-d1589e4d8fb0 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  28%|██▊       | 8/29 [00:01<00:03,  6.75it/s][agentic_loop] reset browser to about:blank for task_id=b807dcaa-18cf-4c84-bb95-53d7a1c03139
+[agentic_loop] no start_url for task_id=b807dcaa-18cf-4c84-bb95-53d7a1c03139; skipping init visit
+[agentic_loop] task_id=b807dcaa-18cf-4c84-bb95-53d7a1c03139 entering main turn loop with 2 record messages
+[agentic_loop] task_id=b807dcaa-18cf-4c84-bb95-53d7a1c03139 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  31%|███       | 9/29 [00:01<00:02,  7.02it/s][agentic_loop] reset browser to about:blank for task_id=a254d1f9-3634-4c72-996d-d392f1c57696
+[agentic_loop] no start_url for task_id=a254d1f9-3634-4c72-996d-d392f1c57696; skipping init visit
+[agentic_loop] task_id=a254d1f9-3634-4c72-996d-d392f1c57696 entering main turn loop with 2 record messages
+[agentic_loop] task_id=a254d1f9-3634-4c72-996d-d392f1c57696 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  34%|███▍      | 10/29 [00:02<00:02,  6.50it/s][agentic_loop] reset browser to about:blank for task_id=6ca84a4a-f84f-4564-a342-777a3f2b1f71
+[agentic_loop] no start_url for task_id=6ca84a4a-f84f-4564-a342-777a3f2b1f71; skipping init visit
+[agentic_loop] task_id=6ca84a4a-f84f-4564-a342-777a3f2b1f71 entering main turn loop with 2 record messages
+[agentic_loop] task_id=6ca84a4a-f84f-4564-a342-777a3f2b1f71 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  38%|███▊      | 11/29 [00:02<00:02,  6.84it/s][agentic_loop] reset browser to about:blank for task_id=17233fea-6225-4654-93da-91917e7f2eed
+[agentic_loop] no start_url for task_id=17233fea-6225-4654-93da-91917e7f2eed; skipping init visit
+[agentic_loop] task_id=17233fea-6225-4654-93da-91917e7f2eed entering main turn loop with 2 record messages
+[agentic_loop] task_id=17233fea-6225-4654-93da-91917e7f2eed turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  41%|████▏     | 12/29 [00:02<00:02,  6.96it/s][agentic_loop] reset browser to about:blank for task_id=b58d65d3-cfa6-4eb9-92c0-aafbbcadccca
+[agentic_loop] no start_url for task_id=b58d65d3-cfa6-4eb9-92c0-aafbbcadccca; skipping init visit
+[agentic_loop] task_id=b58d65d3-cfa6-4eb9-92c0-aafbbcadccca entering main turn loop with 2 record messages
+[agentic_loop] task_id=b58d65d3-cfa6-4eb9-92c0-aafbbcadccca turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  45%|████▍     | 13/29 [00:02<00:02,  7.26it/s][agentic_loop] reset browser to about:blank for task_id=ec9e467f-09bb-4c92-8040-15b8793ed88b
+[agentic_loop] no start_url for task_id=ec9e467f-09bb-4c92-8040-15b8793ed88b; skipping init visit
+[agentic_loop] task_id=ec9e467f-09bb-4c92-8040-15b8793ed88b entering main turn loop with 2 record messages
+[agentic_loop] task_id=ec9e467f-09bb-4c92-8040-15b8793ed88b turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  48%|████▊     | 14/29 [00:02<00:01,  7.59it/s][agentic_loop] reset browser to about:blank for task_id=ab341c25-a7b5-4567-afb0-3909cb9d7a8a
+[agentic_loop] no start_url for task_id=ab341c25-a7b5-4567-afb0-3909cb9d7a8a; skipping init visit
+[agentic_loop] task_id=ab341c25-a7b5-4567-afb0-3909cb9d7a8a entering main turn loop with 2 record messages
+[agentic_loop] task_id=ab341c25-a7b5-4567-afb0-3909cb9d7a8a turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  52%|█████▏    | 15/29 [00:02<00:01,  7.55it/s][agentic_loop] reset browser to about:blank for task_id=28333aac-0fcc-457e-985f-c5eb94cbed85
+[agentic_loop] no start_url for task_id=28333aac-0fcc-457e-985f-c5eb94cbed85; skipping init visit
+[agentic_loop] task_id=28333aac-0fcc-457e-985f-c5eb94cbed85 entering main turn loop with 2 record messages
+[agentic_loop] task_id=28333aac-0fcc-457e-985f-c5eb94cbed85 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  55%|█████▌    | 16/29 [00:02<00:01,  7.81it/s][agentic_loop] reset browser to about:blank for task_id=1662351f-1471-414e-b463-d38636c07789
+[agentic_loop] no start_url for task_id=1662351f-1471-414e-b463-d38636c07789; skipping init visit
+[agentic_loop] task_id=1662351f-1471-414e-b463-d38636c07789 entering main turn loop with 2 record messages
+[agentic_loop] task_id=1662351f-1471-414e-b463-d38636c07789 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  59%|█████▊    | 17/29 [00:02<00:01,  8.10it/s][agentic_loop] reset browser to about:blank for task_id=46fee3d2-1bc9-4a14-a591-c534c0c2c659
+[agentic_loop] no start_url for task_id=46fee3d2-1bc9-4a14-a591-c534c0c2c659; skipping init visit
+[agentic_loop] task_id=46fee3d2-1bc9-4a14-a591-c534c0c2c659 entering main turn loop with 2 record messages
+[agentic_loop] task_id=46fee3d2-1bc9-4a14-a591-c534c0c2c659 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  62%|██████▏   | 18/29 [00:03<00:01,  7.73it/s][agentic_loop] reset browser to about:blank for task_id=96ddc2b2-4436-4afc-af77-fe2b5bd153ee
+[agentic_loop] no start_url for task_id=96ddc2b2-4436-4afc-af77-fe2b5bd153ee; skipping init visit
+[agentic_loop] task_id=96ddc2b2-4436-4afc-af77-fe2b5bd153ee entering main turn loop with 2 record messages
+[agentic_loop] task_id=96ddc2b2-4436-4afc-af77-fe2b5bd153ee turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  66%|██████▌   | 19/29 [00:03<00:01,  8.10it/s][agentic_loop] reset browser to about:blank for task_id=d08d2fc2-f793-4a09-a8b2-3e66f6e2535f
+[agentic_loop] no start_url for task_id=d08d2fc2-f793-4a09-a8b2-3e66f6e2535f; skipping init visit
+[agentic_loop] task_id=d08d2fc2-f793-4a09-a8b2-3e66f6e2535f entering main turn loop with 2 record messages
+[agentic_loop] task_id=d08d2fc2-f793-4a09-a8b2-3e66f6e2535f turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  69%|██████▉   | 20/29 [00:03<00:01,  7.90it/s][agentic_loop] reset browser to about:blank for task_id=3adebd3e-a2d6-42cd-994a-04f41606554c
+[agentic_loop] no start_url for task_id=3adebd3e-a2d6-42cd-994a-04f41606554c; skipping init visit
+[agentic_loop] task_id=3adebd3e-a2d6-42cd-994a-04f41606554c entering main turn loop with 2 record messages
+[agentic_loop] task_id=3adebd3e-a2d6-42cd-994a-04f41606554c turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  72%|███████▏  | 21/29 [00:03<00:01,  7.74it/s][agentic_loop] reset browser to about:blank for task_id=4f1dc12f-21bd-4ca4-9838-5ffd3686d580
+[agentic_loop] no start_url for task_id=4f1dc12f-21bd-4ca4-9838-5ffd3686d580; skipping init visit
+[agentic_loop] task_id=4f1dc12f-21bd-4ca4-9838-5ffd3686d580 entering main turn loop with 2 record messages
+[agentic_loop] task_id=4f1dc12f-21bd-4ca4-9838-5ffd3686d580 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  76%|███████▌  | 22/29 [00:03<00:00,  7.89it/s][agentic_loop] reset browser to about:blank for task_id=6377e4c4-16ca-4070-9f76-82d8939466b1
+[agentic_loop] no start_url for task_id=6377e4c4-16ca-4070-9f76-82d8939466b1; skipping init visit
+[agentic_loop] task_id=6377e4c4-16ca-4070-9f76-82d8939466b1 entering main turn loop with 2 record messages
+[agentic_loop] task_id=6377e4c4-16ca-4070-9f76-82d8939466b1 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  79%|███████▉  | 23/29 [00:03<00:00,  7.97it/s][agentic_loop] reset browser to about:blank for task_id=fb4f36b2-4aec-4a1c-92cc-cd6a43c29de2
+[agentic_loop] no start_url for task_id=fb4f36b2-4aec-4a1c-92cc-cd6a43c29de2; skipping init visit
+[agentic_loop] task_id=fb4f36b2-4aec-4a1c-92cc-cd6a43c29de2 entering main turn loop with 2 record messages
+[agentic_loop] task_id=fb4f36b2-4aec-4a1c-92cc-cd6a43c29de2 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  83%|████████▎ | 24/29 [00:03<00:00,  7.48it/s][agentic_loop] reset browser to about:blank for task_id=73bd8c82-af0a-44b6-9f20-32718efcf07d
+[agentic_loop] no start_url for task_id=73bd8c82-af0a-44b6-9f20-32718efcf07d; skipping init visit
+[agentic_loop] task_id=73bd8c82-af0a-44b6-9f20-32718efcf07d entering main turn loop with 2 record messages
+[agentic_loop] task_id=73bd8c82-af0a-44b6-9f20-32718efcf07d turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  86%|████████▌ | 25/29 [00:03<00:00,  7.02it/s][agentic_loop] reset browser to about:blank for task_id=009af0e4-03be-4a08-b888-ccd9f105f3b0
+[agentic_loop] no start_url for task_id=009af0e4-03be-4a08-b888-ccd9f105f3b0; skipping init visit
+[agentic_loop] task_id=009af0e4-03be-4a08-b888-ccd9f105f3b0 entering main turn loop with 2 record messages
+[agentic_loop] task_id=009af0e4-03be-4a08-b888-ccd9f105f3b0 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  90%|████████▉ | 26/29 [00:04<00:00,  6.61it/s][agentic_loop] reset browser to about:blank for task_id=ee68c1b3-1dc3-49bb-a33e-e0096a92e20a
+[agentic_loop] no start_url for task_id=ee68c1b3-1dc3-49bb-a33e-e0096a92e20a; skipping init visit
+[agentic_loop] task_id=ee68c1b3-1dc3-49bb-a33e-e0096a92e20a entering main turn loop with 2 record messages
+[agentic_loop] task_id=ee68c1b3-1dc3-49bb-a33e-e0096a92e20a turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  93%|█████████▎| 27/29 [00:04<00:00,  6.75it/s][agentic_loop] reset browser to about:blank for task_id=0f281a9a-1d30-4d51-a5d2-25874c11caa9
+[agentic_loop] no start_url for task_id=0f281a9a-1d30-4d51-a5d2-25874c11caa9; skipping init visit
+[agentic_loop] task_id=0f281a9a-1d30-4d51-a5d2-25874c11caa9 entering main turn loop with 2 record messages
+[agentic_loop] task_id=0f281a9a-1d30-4d51-a5d2-25874c11caa9 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...:  97%|█████████▋| 28/29 [00:04<00:00,  7.28it/s][agentic_loop] reset browser to about:blank for task_id=b491e9d3-8af2-4f5b-8275-07f4af21f193
+[agentic_loop] no start_url for task_id=b491e9d3-8af2-4f5b-8275-07f4af21f193; skipping init visit
+[agentic_loop] task_id=b491e9d3-8af2-4f5b-8275-07f4af21f193 entering main turn loop with 2 record messages
+[agentic_loop] task_id=b491e9d3-8af2-4f5b-8275-07f4af21f193 turn=0
+[ERROR]: RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+Traceback:
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 475, in main
+    result = await agentic_loop(sem, data, messages, client, lock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py", line 223, in agentic_loop
+    response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 48, in call_llm
+    LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
+  File "/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py", line 42, in get_access_token
+    _credentials.refresh(_auth_req)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/credentials.py", line 412, in refresh
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/scr/rucnyz/miniconda3/lib/python3.13/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+
+Navi-Bench Rollout ...: 100%|██████████| 29/29 [00:04<00:00,  7.49it/s]Navi-Bench Rollout ...: 100%|██████████| 29/29 [00:04<00:00,  6.39it/s]
+Exiting MCPClient context. Cleaning up...
+ClientSession cleaned up.
+SSE client streams cleaned up.
+MCPClient: Ping task was cancelled.

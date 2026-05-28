@@ -1,0 +1,148 @@
+Total number of tasks: 8
+initialize
+meta=None protocolVersion='2025-11-25' capabilities=ServerCapabilities(experimental=None, logging=None, prompts=None, resources=None, tools=ToolsCapability(listChanged=None), completions=None, tasks=None) serverInfo=Implementation(name='Playwright', title=None, version='1.60.0-alpha-1774999321000', websiteUrl=None, icons=None) instructions=None
+Initialized SSE client...
+Listing tools...
+
+Connected to server with tools: ['browser_close', 'browser_resize', 'browser_console_messages', 'browser_handle_dialog', 'browser_evaluate', 'browser_file_upload', 'browser_fill_form', 'browser_press_key', 'browser_type', 'browser_navigate', 'browser_navigate_back', 'browser_network_requests', 'browser_run_code', 'browser_take_screenshot', 'browser_snapshot', 'browser_click', 'browser_drag', 'browser_hover', 'browser_select_option', 'browser_tabs', 'browser_wait_for']
+Navi-Bench Rollout ...:   0%|          | 0/8 [00:00<?, ?it/s][agentic_loop] reset browser to about:blank for task_id=cff00636-08fe-4c29-b468-e5dac57ad1f9
+[agentic_loop] no start_url for task_id=cff00636-08fe-4c29-b468-e5dac57ad1f9; skipping init visit
+[agentic_loop] task_id=cff00636-08fe-4c29-b468-e5dac57ad1f9 entering main turn loop with 2 record messages
+[agentic_loop] task_id=cff00636-08fe-4c29-b468-e5dac57ad1f9 turn=0
+[agentic_loop] task_id=cff00636-08fe-4c29-b468-e5dac57ad1f9 turn=0 response_len=24
+Navi-Bench Rollout ...:  12%|█▎        | 1/8 [00:23<02:41, 23.03s/it][eval] Running semantic evaluation for task: cff00636-08fe-4c29-b468-e5dac57ad1f9 (gt=yes)
+[eval] Result: answer, reasoning: The agent's answer 'Germany' exactly matches the ground truth answer 'Germany'.
+[agentic_loop] reset browser to about:blank for task_id=5df8621e-8581-432a-bad9-8344be6171f6
+[agentic_loop] no start_url for task_id=5df8621e-8581-432a-bad9-8344be6171f6; skipping init visit
+[agentic_loop] task_id=5df8621e-8581-432a-bad9-8344be6171f6 entering main turn loop with 2 record messages
+[agentic_loop] task_id=5df8621e-8581-432a-bad9-8344be6171f6 turn=0
+[agentic_loop] task_id=5df8621e-8581-432a-bad9-8344be6171f6 turn=0 response_len=186
+Navi-Bench Rollout ...:  25%|██▌       | 2/8 [00:39<01:56, 19.42s/it][eval] Running semantic evaluation for task: 5df8621e-8581-432a-bad9-8344be6171f6 (gt=yes)
+[eval] Result: answer, reasoning: Both the ground truth and the agent's answer identify Poland.
+[agentic_loop] reset browser to about:blank for task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259
+[agentic_loop] no start_url for task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259; skipping init visit
+[agentic_loop] task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 entering main turn loop with 2 record messages
+[agentic_loop] task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 turn=0
+[agentic_loop] task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 turn=0 response_len=157
+========================================================
+Call tool visit, args: {'url': 'https://en.wikipedia.org/wiki/Ada_Lovelace', 'goal': 'Find the birthplace of Ada Lovelace'}
+[visit] returned: same_spa= False isError= False content_len= 1
+[visit] Post-navigate snapshot via browser_snapshot
+[tool_explore] raw response[:300]: <useful_info>{"rational": "The user's goal is to find the birthplace of Ada Lovelace. This information is typically located in the biographical summary or the infobox at the top of a Wikipedia article.", "evidence": "row \"Born Augusta Ada Byron 10 December 1815 London, England\" [ref=e177]:\n  - ro
+[tool_explore] json_str[:200]: {"rational": "The user's goal is to find the birthplace of Ada Lovelace. This information is typically located in the biographical summary or the infobox at the top of a Wikipedia article.", "evidence
+[tool_explore] raw response[:300]: <useful_info>{"rational": "The user's goal is to find the birthplace of Ada Lovelace. The biographical infobox provides explicit details regarding the subject's birth, including the location.", "evidence": "row \"Born Augusta Ada Byron 10 December 1815 London, England\" [ref=e177]:\n  - rowheader \"
+[tool_explore] json_str[:200]: {"rational": "The user's goal is to find the birthplace of Ada Lovelace. The biographical infobox provides explicit details regarding the subject's birth, including the location.", "evidence": "row \"
+Tool call visit success, length 555
+[visit] The useful information from visiting https://en.wikipedia.org/wiki/Ada_Lovelace for user goal 'Find the birthplace of Ada Lovelace' as follows: 
+
+Evidence in page: 
+row "Born Augusta Ada Byron 10 December 1815 London, England" [ref=e177]:
+  - rowheader "Born" [ref=e178]
+  - cell "Augusta Ada Byron 10 December 1815 London, England" [ref=e179]:
+    - text: Augusta Ada Byron
+    - text: 10 December 1815
+    - text: London, England
+
+Summary: 
+According to the biographical infobox provided on the webpage, Ada Lovelace was born in London, England.
+[agentic_loop] task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 turn=1
+[agentic_loop] task_id=3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 turn=1 response_len=24
+Navi-Bench Rollout ...:  38%|███▊      | 3/8 [01:22<02:29, 29.89s/it][eval] Running semantic evaluation for task: 3a2ccf57-c74f-40a9-a62c-84d2f2ec0259 (gt=yes)
+[eval] Result: answer_incorrect, reasoning: The agent's answer 'England' does not match the ground truth 'Roman Empire'.
+[agentic_loop] reset browser to about:blank for task_id=bcf10f56-443a-43d1-a8bf-91403f19cfcb
+[agentic_loop] no start_url for task_id=bcf10f56-443a-43d1-a8bf-91403f19cfcb; skipping init visit
+[agentic_loop] task_id=bcf10f56-443a-43d1-a8bf-91403f19cfcb entering main turn loop with 2 record messages
+[agentic_loop] task_id=bcf10f56-443a-43d1-a8bf-91403f19cfcb turn=0
+[agentic_loop] task_id=bcf10f56-443a-43d1-a8bf-91403f19cfcb turn=0 response_len=31
+Navi-Bench Rollout ...:  50%|█████     | 4/8 [01:33<01:29, 22.42s/it][eval] Running semantic evaluation for task: bcf10f56-443a-43d1-a8bf-91403f19cfcb (gt=yes)
+[eval] Result: answer, reasoning: The agent's answer exactly matches the ground truth.
+[agentic_loop] reset browser to about:blank for task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12
+[agentic_loop] no start_url for task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12; skipping init visit
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 entering main turn loop with 2 record messages
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=0
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=0 response_len=151
+========================================================
+Call tool visit, args: {'url': 'http://127.0.0.1:8080/wiki/Main_Page', 'goal': 'Find information about Isaac Newton'}
+[visit] returned: same_spa= False isError= True content_len= 1
+Tool call visit success, length 241
+[visit] Visit error: ### Error
+Error: browserBackend.callTool: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8080/wiki/Main_Page
+Call log:
+[2m  - navigating to "http://127.0.0.1:8080/wiki/Main_Page", waiting until "domcontentloaded"[22m
+
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=1
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=1 response_len=157
+========================================================
+Call tool visit, args: {'url': 'https://en.wikipedia.org/wiki/Isaac_Newton', 'goal': 'Find the birthplace of Isaac Newton'}
+[visit] returned: same_spa= False isError= False content_len= 1
+[visit] Post-navigate snapshot via browser_snapshot
+[tool_explore] raw response[:300]: <useful_info>{"rational": "The birthplace of Isaac Newton is clearly stated in the biographical infobox at the beginning of the article, as well as detailed in the 'Early life' section of the webpage.", "evidence": "From the infobox:\n- rowheader \"Born\"\n- cell \"4 January 1643 [O.S. 25 December 1
+[tool_explore] json_str[:200]: {"rational": "The birthplace of Isaac Newton is clearly stated in the biographical infobox at the beginning of the article, as well as detailed in the 'Early life' section of the webpage.", "evidence"
+[tool_explore] raw response[:300]: <useful_info>
+{
+  "rational": "The user's goal is to find the birthplace of Isaac Newton. The relevant information is explicitly stated in the infobox and the 'Early life' section of the article, which detail the specific manor, hamlet, and county of his birth, alongside passing mentions in the refe
+[tool_explore] json_str[:200]: {
+  "rational": "The user's goal is to find the birthplace of Isaac Newton. The relevant information is explicitly stated in the infobox and the 'Early life' section of the article, which detail the s
+[tool_explore] raw response[:300]: <useful_info>
+{
+  "rational": "The user is looking for the birthplace of Isaac Newton. The provided text contains citations and references that mention Woolsthorpe Manor and Lincolnshire, which supports the previously extracted information about his birthplace.",
+  "evidence": "From the infobox:\n- 
+[tool_explore] json_str[:200]: {
+  "rational": "The user is looking for the birthplace of Isaac Newton. The provided text contains citations and references that mention Woolsthorpe Manor and Lincolnshire, which supports the previou
+[tool_explore] raw response[:300]: <useful_info>
+{
+  "rational": "The infobox and the 'Early life' section of the webpage provide the exact location of Isaac Newton's birth. Additionally, the references section contains supporting notes regarding the historical significance of his birthplace.",
+  "evidence": "From the infobox:\n- row
+[tool_explore] json_str[:200]: {
+  "rational": "The infobox and the 'Early life' section of the webpage provide the exact location of Isaac Newton's birth. Additionally, the references section contains supporting notes regarding th
+Tool call visit success, length 1282
+[visit] The useful information from visiting https://en.wikipedia.org/wiki/Isaac_Newton for user goal 'Find the birthplace of Isaac Newton' as follows: 
+
+Evidence in page: 
+From the infobox:
+- rowheader "Born"
+- cell "4 January 1643 [O.S. 25 December 1642][a] Woolsthorpe-by-Colsterworth, Lincolnshire, England"
+
+From the 'Early life' section:
+Isaac Newton was born (according to the Julian calendar in use in England at the time) on Christmas Day, 25 December 1642 (NS 4 January 1643) at Woolsthorpe Manor in Woolsthorpe-by-Colsterworth, a hamlet in Lincolnshire.
+
+From the references/notes section:
+- text: through being his birthplace and "where he discovered gravity and developed his theories regarding the refraction of light".
+- link "\"Woolsthorpe Manor | Lincolnshire\"" [ref=e5369]
+- link "\"Woolsthorpe Manor House, Colsterworth (1062362)\"" [ref=e5423]
+
+From the Categories:
+- link "People from South Kesteven District"
+
+Summary: 
+Isaac Newton was born at Woolsthorpe Manor, located in the hamlet of Woolsthorpe-by-Colsterworth in Lincolnshire, England (part of the modern South Kesteven District). This location is historically recognized not only as his birthplace but also as the site where he made his early discoveries regarding gravity and the refraction of light.
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=2
+[agentic_loop] task_id=95cd1600-43b8-4859-9ab4-ea391ced3a12 turn=2 response_len=24
+Navi-Bench Rollout ...:  62%|██████▎   | 5/8 [02:37<01:52, 37.34s/it][eval] Running semantic evaluation for task: 95cd1600-43b8-4859-9ab4-ea391ced3a12 (gt=yes)
+[eval] Result: answer, reasoning: England is a constituent country of the United Kingdom, so the agent's answer accurately represents the same geographic location as the ground truth.
+[agentic_loop] reset browser to about:blank for task_id=ffd14dd0-01b0-4583-99b1-53cfe59cdb24
+[agentic_loop] no start_url for task_id=ffd14dd0-01b0-4583-99b1-53cfe59cdb24; skipping init visit
+[agentic_loop] task_id=ffd14dd0-01b0-4583-99b1-53cfe59cdb24 entering main turn loop with 2 record messages
+[agentic_loop] task_id=ffd14dd0-01b0-4583-99b1-53cfe59cdb24 turn=0
+[agentic_loop] task_id=ffd14dd0-01b0-4583-99b1-53cfe59cdb24 turn=0 response_len=24
+Navi-Bench Rollout ...:  75%|███████▌  | 6/8 [02:54<01:01, 30.60s/it][eval] Running semantic evaluation for task: ffd14dd0-01b0-4583-99b1-53cfe59cdb24 (gt=yes)
+[eval] Result: answer, reasoning: The agent's answer exactly matches the ground truth.
+[agentic_loop] reset browser to about:blank for task_id=06c20a43-cc37-461e-87bd-d25f4d324d45
+[agentic_loop] no start_url for task_id=06c20a43-cc37-461e-87bd-d25f4d324d45; skipping init visit
+[agentic_loop] task_id=06c20a43-cc37-461e-87bd-d25f4d324d45 entering main turn loop with 2 record messages
+[agentic_loop] task_id=06c20a43-cc37-461e-87bd-d25f4d324d45 turn=0
+[agentic_loop] task_id=06c20a43-cc37-461e-87bd-d25f4d324d45 turn=0 response_len=22
+Navi-Bench Rollout ...:  88%|████████▊ | 7/8 [03:05<00:24, 24.12s/it][eval] Running semantic evaluation for task: 06c20a43-cc37-461e-87bd-d25f4d324d45 (gt=yes)
+[eval] Result: answer, reasoning: The agent's answer exactly matches the ground truth answer, as both state 'Italy'.
+[agentic_loop] reset browser to about:blank for task_id=544e3d4f-b769-492e-a48b-f1da829c08a1
+[agentic_loop] no start_url for task_id=544e3d4f-b769-492e-a48b-f1da829c08a1; skipping init visit
+[agentic_loop] task_id=544e3d4f-b769-492e-a48b-f1da829c08a1 entering main turn loop with 2 record messages
+[agentic_loop] task_id=544e3d4f-b769-492e-a48b-f1da829c08a1 turn=0
+[agentic_loop] task_id=544e3d4f-b769-492e-a48b-f1da829c08a1 turn=0 response_len=146
+Navi-Bench Rollout ...: 100%|██████████| 8/8 [03:29<00:00, 24.05s/it]Navi-Bench Rollout ...: 100%|██████████| 8/8 [03:29<00:00, 26.15s/it]
+[eval] Running semantic evaluation for task: 544e3d4f-b769-492e-a48b-f1da829c08a1 (gt=yes)
+[eval] Result: answer, reasoning: The agent's answer 'Mexico' exactly matches the ground truth answer.
+Exiting MCPClient context. Cleaning up...
+ClientSession cleaned up.
+SSE client streams cleaned up.
+MCPClient: Ping task was cancelled.

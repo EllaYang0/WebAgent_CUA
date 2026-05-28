@@ -517,7 +517,7 @@ if __name__ == '__main__':
     MAX_AGENT_LEN = 128 * 1024
     MAX_SINGLE_GEN_TOKENS = 8192
     MAX_SUMMARY_SHARD_LEN = 64 * 1024
-    benchmark_name = "wiki_2hop"
+    benchmark_name = "wiki_2hop_v3_scaled"
     MODEL_NAME = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
     MAX_WORKERS = 1
     sem = {

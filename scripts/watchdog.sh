@@ -17,6 +17,21 @@ INTERVAL=${INTERVAL:-300}
 : "${STATUS:?STATUS required}"
 : "${RESULT_PREFIX:?RESULT_PREFIX required}"
 
+# Support both layouts:
+#   - new per-benchmark layout: RESULT_PREFIX is a directory containing
+#     success.jsonl / failure.jsonl / trajectory.jsonl
+#   - legacy flat layout: RESULT_PREFIX is a path prefix and files are at
+#     ${RESULT_PREFIX}_success.jsonl etc.
+if [ -d "$RESULT_PREFIX" ]; then
+    SUCC_PATH="$RESULT_PREFIX/success.jsonl"
+    FAIL_PATH="$RESULT_PREFIX/failure.jsonl"
+    TRAJ_PATH="$RESULT_PREFIX/trajectory.jsonl"
+else
+    SUCC_PATH="$SUCC_PATH"
+    FAIL_PATH="$FAIL_PATH"
+    TRAJ_PATH="$TRAJ_PATH"
+fi
+
 mkdir -p "$(dirname "$STATUS")"
 {
     echo "# Watchdog log — started $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -46,10 +61,10 @@ snapshot() {
     last_calls=$(grep -E "Call tool " "$LOG" 2>/dev/null | tail -3 | cut -c1-180)
 
     local succ_n fail_n traj_n terms
-    succ_n=$(wc -l < "${RESULT_PREFIX}_success.jsonl" 2>/dev/null || echo 0)
-    fail_n=$(wc -l < "${RESULT_PREFIX}_failure.jsonl" 2>/dev/null || echo 0)
-    traj_n=$(wc -l < "${RESULT_PREFIX}_trajectory.jsonl" 2>/dev/null || echo 0)
-    terms=$(grep -oE '"termination": "[^"]+"' "${RESULT_PREFIX}_trajectory.jsonl" 2>/dev/null \
+    succ_n=$(wc -l < "$SUCC_PATH" 2>/dev/null || echo 0)
+    fail_n=$(wc -l < "$FAIL_PATH" 2>/dev/null || echo 0)
+    traj_n=$(wc -l < "$TRAJ_PATH" 2>/dev/null || echo 0)
+    terms=$(grep -oE '"termination": "[^"]+"' "$TRAJ_PATH" 2>/dev/null \
             | sort | uniq -c | awk '{printf "%s=%d ", $3, $1}')
     terms=${terms:-(none yet)}
 
@@ -113,7 +128,7 @@ snapshot "DONE"
     python3 -c "
 import json
 import os
-traj='${RESULT_PREFIX}_trajectory.jsonl'
+traj='$TRAJ_PATH'
 if os.path.exists(traj):
     terms={}
     ans=0

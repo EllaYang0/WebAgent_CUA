@@ -1,0 +1,88 @@
+[category] walking 3 categories sitelinks=[3,10] recurse_depth=0 target=60
+  [cat] Category:20th-century Russian mathematicians: 80 raw members
+  [cat] Category:Czech mathematicians: 59 raw members
+  [cat] Category:Hungarian physicists: 35 raw members
+  [cat] total unique candidates before sitelink filter: 174
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 6.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [cat] kept 60 after sitelink filter [3,10]
+[category] got 60 candidate seeds
+[main] mode=specific  n=5  freq_cap=2
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Valentin Afraimovich: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematical analy' A='Kirov' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 15.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Matest M. Agrest: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; was e' A='Kniažycy' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alexei Borisovich Aleksandrov: Q='Identify a person matching all of these clues: works as a mathematician; received the Salem Prize; w' A='Viktor Khavin' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 16.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Anton Alekseev (mathematician): Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Ludvig Faddeev' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 17.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Vladimir Alekseev (mathematician): LLM guessed correctly without tools — answer='Bykovo, Moscow Oblast' llm_said="A=GUESSED('Moscow') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+[ok] Anatoliy Boldyrev: Q='Identify a person matching all of these clues: works as a geologist and crystallographer; works in c' A='Grayvoron' variant=v2_specific_birthplace_city type=birthplace_city
+
+wrote 5 Q-A pairs (0 skipped) -> /scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/data/synth/wiki_2hop_hard_v3.jsonl
+  LLM-screen dropped: 1 additional candidates (LLM answered correctly without tools)
+  v3 weak-clue skips (seed had no STRONG/MEDIUM clue): 0
+  v2 banned-skips (all props blocked): 0
+  v2 answer-type distribution:
+    birthplace_city: 3
+    doctoral_advisor: 2
+  v2 answer-label distribution (top 10):
+    kirov: 1
+    kniažycy: 1
+    viktor khavin: 1
+    ludvig faddeev: 1
+    grayvoron: 1

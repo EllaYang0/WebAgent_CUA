@@ -1,0 +1,109 @@
+[category] walking 3 categories sitelinks=[3,10] recurse_depth=0 target=60
+  [cat] Category:20th-century Russian mathematicians: 80 raw members
+  [cat] Category:Czech mathematicians: 59 raw members
+  [cat] Category:Hungarian physicists: 35 raw members
+  [cat] total unique candidates before sitelink filter: 174
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [cat] kept 60 after sitelink filter [3,10]
+[category] got 60 candidate seeds
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Valentin Afraimovich: LLM guessed correctly without tools — answer='Russia' llm_said='Russia'
+[skip] Matest M. Agrest: synthesis failed (no chain or insufficient clues)
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+[skip] Alexei Borisovich Aleksandrov: synthesis failed (no chain or insufficient clues)
+[skip] Anton Alekseev (mathematician): synthesis failed (no chain or insufficient clues)
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Vladimir Alekseev (mathematician): Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+[ok] Anatoliy Boldyrev: Q='Identify a person matching all of these clues: works as a geologist and crystallographer; works in c' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Konstantin Andreev: Q='Identify a person matching all of these clues: works as a mathematician; works in projective geometr' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Anatoli N. Andrianov: Q='Identify a person matching all of these clues: works as a mathematician; studied under Yuri Linnik; ' A='Soviet Union' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Yuri Babayev: Q='Identify a person matching all of these clues: works as a physicist and engineer; works in nuclear p' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Nikolai Bakhvalov: Q='Identify a person matching all of these clues: works as a mathematician; works in applied mathematic' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Nail Bakirov: Q='Identify a person matching all of these clues: works as a mathematician and statistician; works in p' A='Kazakhstan' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+[screened] Serguei Barannikov: LLM guessed correctly without tools — answer='Russia' llm_said='Russia'
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Victor Batyrev: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; rece' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Natalia Berloff: Q='Identify a person matching all of these clues: works as a physicist and mathematician; works in appl' A='Russia' variant=reverse_union_2hop
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Sergei Viktorovich Bochkarev: Q='Identify a person matching all of these clues: works as a mathematician; works in function theory an' A='Russia' variant=reverse_union_2hop
+
+wrote 10 Q-A pairs (3 skipped) -> /scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/data/synth/wiki_2hop_hard_v0.jsonl
+  LLM-screen dropped: 2 additional candidates (LLM answered correctly without tools)
