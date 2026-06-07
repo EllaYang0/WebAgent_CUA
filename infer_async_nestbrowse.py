@@ -77,12 +77,42 @@ def evaluate_gt_info(visited_urls: list, gt_info: list) -> tuple[bool, str]:
     return True, f"matched: {last_url}"
 
 
-async def evaluate_answer_with_llm(sem, task: str, prediction: str, ground_truth: str = None) -> tuple[bool, str]:
+async def evaluate_answer_with_llm(sem, task: str, prediction: str,
+                                    ground_truth: str = None,
+                                    valid_answers: list = None) -> tuple[bool, str]:
     # Without ground truth the judge can only check whether the answer "sounds
     # plausible" for the question — it has no way to know if it's actually right
     # — so it tends to mark unrelated-but-confident answers as correct. ALWAYS
     # supply ground_truth here for benchmarks that have one.
-    if ground_truth is not None and ground_truth != '':
+    #
+    # v3.2: when synth provides `valid_answers` (a list of acceptable answers,
+    # e.g. multiple doctoral advisors per Wikidata P184), pass all of them so
+    # the judge marks correct if agent matched ANY of them. Backward-compatible:
+    # if valid_answers is None/empty, fall back to single ground_truth.
+    if valid_answers and len(valid_answers) > 1:
+        gt_block = "Acceptable ground-truth answers (the agent is correct if its answer matches ANY of these in substance):\n" + \
+                   "\n".join(f"  - {v}" for v in valid_answers)
+        eval_prompt = f"""You are an evaluator for a web agent benchmark. The task can be answered with any of several valid answers (e.g. a person can have multiple doctoral advisors). Decide if the agent's answer matches AT LEAST ONE of them.
+
+Task: {task}
+
+{gt_block}
+
+Agent's answer: {prediction}
+
+The agent is correct if its answer matches ANY of the acceptable answers in substance. Allow for surface differences:
+- different formatting (e.g. "Aleksandr Aleksandrov" vs "A. D. Aleksandrov")
+- synonyms / abbreviations
+- transliteration variants
+- extra phrasing if the core fact matches
+
+Mark INCORRECT only if the agent's answer matches NONE of the listed acceptable answers (it's a different entity entirely).
+
+Respond with a JSON object:
+{{"correct": true/false, "matched_answer": "<which acceptable answer matched, or null>", "reasoning": "brief explanation"}}
+
+Output only the JSON, nothing else."""
+    elif ground_truth is not None and ground_truth != '':
         eval_prompt = f"""You are an evaluator for a web agent benchmark. Compare the agent's answer to the ground-truth answer and decide if the agent answered correctly.
 
 Task: {task}
@@ -377,11 +407,18 @@ async def agentic_loop(sem, data, messages, client, lock):
                             # Pass ground-truth answer when the dataset provides one
                             # (browsecomp has `answer`; agent-eval without it lets the
                             # judge LLM hallucinate matches).
+                            # v3.2: synth records may include `valid_answers` list
+                            # (e.g. multiple advisors per Wikidata P184) so eval can
+                            # accept any of them, not just the first as canonical.
                             ground_truth = data.get('answer') or data.get('ground_truth') or None
+                            valid_answers = data.get('valid_answers') or None
+                            n_valid = len(valid_answers) if valid_answers else 0
                             print(f"[eval] Running semantic evaluation for task: {task_id} "
-                                  f"(gt={'yes' if ground_truth else 'no'})")
+                                  f"(gt={'yes' if ground_truth else 'no'}, valid_answers={n_valid})")
                             is_correct, eval_reasoning = await evaluate_answer_with_llm(
-                                sem, task, prediction, ground_truth=ground_truth
+                                sem, task, prediction,
+                                ground_truth=ground_truth,
+                                valid_answers=valid_answers,
                             )
                             termination = 'answer' if is_correct else 'answer_incorrect'
                             print(f"[eval] Result: {termination}, reasoning: {eval_reasoning}")
@@ -517,7 +554,7 @@ if __name__ == '__main__':
     MAX_AGENT_LEN = 128 * 1024
     MAX_SINGLE_GEN_TOKENS = 8192
     MAX_SUMMARY_SHARD_LEN = 64 * 1024
-    benchmark_name = "wiki_2hop_v3_scaled"
+    benchmark_name = "wiki_2hop_batch3"
     MODEL_NAME = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
     MAX_WORKERS = 1
     sem = {

@@ -28,6 +28,15 @@ You are already on the starting page. Use the available tools to navigate the we
 - You MUST call only ONE tool per turn. Wait for the result and observe the updated Evidence before calling the next tool.
 - NEVER call multiple `fill` or `click` tools in parallel — each interaction may change the page DOM and invalidate other refs.
 
+## CRITICAL: For relational questions (advisor / students / employer / etc.), read the right infobox field
+
+Many Wikipedia biography pages list MULTIPLE bidirectional relationship fields. Confusing them is a common, easy-to-avoid mistake:
+
+- "Doctoral advisor" and "Doctoral students" are OPPOSITE directions. If a question asks "Who was the doctoral advisor of X?", the answer is X's mentor — found in X's infobox under **Doctoral advisor** — NOT X's students. Inversely, if a question asks "Who were the students of X?", read **Doctoral students** — not advisors.
+- The same caution applies to "Influenced by" vs "Influenced", "Notable students" vs "Mentor", and similar paired fields.
+- When you land on the target person's Wikipedia article, identify the EXACT infobox field that matches the question wording before extracting an answer. Do NOT extract a name from a related-but-wrong field.
+- If the page lacks the specific infobox field, look in the "Education" / "Career" / "Early life" prose sections — but stay on the right direction.
+
 ## Interacting with combobox / autocomplete fields
 
 - For airport, city, or any autocomplete/combobox input: first call `fill` to type the text, then in the returned Evidence, find and `click` the matching dropdown suggestion to confirm the selection.

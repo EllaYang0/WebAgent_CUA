@@ -3,3 +3,10 @@ __pycache__/
 .playwright-mcp/
 .env
 .DS_Store
+
+# partial / backup directories from interrupted runs
+dataset/*_partial*/
+results/*_partial_*/
+results/*_partial[0-9]*/
+*.partial[0-9]*
+*_OBSOLETE

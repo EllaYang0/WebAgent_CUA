@@ -36,6 +36,7 @@ Usage:
 import argparse
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -816,12 +817,20 @@ def synth_basic_2hop(seed_title: str) -> Optional[dict]:
 # for the decision rationale.
 
 # Answer priority chain — try each in order; pick first non-banned hit.
+#
+# v3.1 (Fix 3, post-N=200 post-mortem):
+#   Previous order had P19 (birthplace_city) FIRST, which meant nearly every
+#   mathematician seed produced a city question (90%+ of N=200 output). The
+#   training set was 97% city, with 0 advisor in A_clean SFT.
+#
+#   New order: advisor / employer / educated_at FIRST. These narrow down what
+#   the agent has to look up (must read infobox advisor field, not just title)
+#   and they're sparser in Gemini's training memory, making the screener's
+#   job easier. P19 stays in the chain as a fallback for seeds where Wikidata
+#   has no advisor/employer/educated_at data (some seeds genuinely lack this).
+#   P800 (notable_work) and P166 (award) demoted further — they're harder to
+#   eval consistently (string match on work titles is brittle).
 V2_ANSWER_PROPS = [
-    {
-        "prop": "P19",
-        "name": "birthplace_city",
-        "template_reverse": "In which city was this person born?",
-    },
     {
         "prop": "P184",
         "name": "doctoral_advisor",
@@ -836,6 +845,11 @@ V2_ANSWER_PROPS = [
         "prop": "P69",
         "name": "educated_at",
         "template_reverse": "At which institution did this person study?",
+    },
+    {
+        "prop": "P19",
+        "name": "birthplace_city",
+        "template_reverse": "In which city was this person born?",
     },
     {
         "prop": "P800",
@@ -933,28 +947,55 @@ def synth_v2_specific(seed_title: str,
     tried = []
     for spec in V2_ANSWER_PROPS:
         prop = spec["prop"]
+        # v3.2 (post-batch2 post-mortem): Multi-value props like P184 (advisor) /
+        # P108 (employer) / P69 (educated_at) commonly list multiple valid
+        # entities on Wikidata. Previous code took only the first one as GT,
+        # which caused the "Yuri Burago → Aleksandr Aleksandrov" failure mode:
+        # agent finds the seed's page, sees multiple advisors listed, picks one
+        # that's NOT our GT-first — eval marks wrong even though answer is
+        # one of the real advisors.
+        #
+        # Fix: collect ALL valid (non-banned) values. Use first as canonical
+        # `answer` (preserves backward compat); store full list as
+        # `valid_answers` for tolerant eval downstream.
         try:
-            ans_qid = wikidata_get_claim_qid(seed_qid, prop)
+            ans_qids = wikidata_get_claim_qids(seed_qid, prop, max_count=10)
         except Exception as e:
             tried.append(f"{spec['name']}:err({type(e).__name__})")
             continue
-        if not ans_qid:
+        if not ans_qids:
             tried.append(f"{spec['name']}:no_claim")
             continue
-        ans_label, _ = wikidata_label_and_enwiki(ans_qid)
-        if not ans_label:
-            tried.append(f"{spec['name']}:no_label")
+
+        # Resolve all qids → labels, filter banned
+        valid_labels = []
+        valid_qids = []
+        for q in ans_qids:
+            lbl, _ = wikidata_label_and_enwiki(q)
+            if not lbl:
+                continue
+            banned, _ = _answer_is_banned(lbl, q)
+            if banned:
+                continue
+            valid_labels.append(lbl)
+            valid_qids.append(q)
+        if not valid_labels:
+            tried.append(f"{spec['name']}:all_banned_or_no_label")
             continue
-        banned, why = _answer_is_banned(ans_label, ans_qid)
-        if banned:
-            tried.append(f"{spec['name']}:BANNED({why})")
-            continue
-        # Frequency cap — don't let one answer dominate a small batch
+        # Canonical = first non-banned (matches v3.1 behavior for backward
+        # compat; eval/training can use valid_answers list for tolerance)
+        ans_label = valid_labels[0]
+        ans_qid = valid_qids[0]
+
+        # Frequency cap — applied on canonical only
         if batch_answer_counts.get(ans_label.lower(), 0) >= max_repeat_per_answer:
             tried.append(f"{spec['name']}:freq_cap('{ans_label}'>{max_repeat_per_answer-1})")
             continue
-        # Strip any clue that names this specific answer (keep puzzle non-trivial)
-        kept_clue_records = [(t, p) for (t, p) in clue_records if ans_label.lower() not in t.lower()]
+        # Strip clues that name ANY of the valid answers (be conservative)
+        def _leaks(text):
+            tl = text.lower()
+            return any(v.lower() in tl for v in valid_labels)
+        kept_clue_records = [(t, p) for (t, p) in clue_records if not _leaks(t)]
         if len(kept_clue_records) < 2:
             tried.append(f"{spec['name']}:clues_leak_answer")
             continue
@@ -963,6 +1004,11 @@ def synth_v2_specific(seed_title: str,
         if not kept_strength_ok:
             tried.append(f"{spec['name']}:strength_lost_after_strip({kept_reason})")
             continue
+        # v3.2: SHUFFLE clue order — fixed order (P106 → P101 → P800 → ...)
+        # makes the trained model overfit to "clue position predicts type".
+        # Random order forces robust feature extraction.
+        kept_clue_records = list(kept_clue_records)
+        random.shuffle(kept_clue_records)
         kept_clue_texts = [t for (t, _) in kept_clue_records]
         clue_block = "; ".join(kept_clue_texts)
         question = (
@@ -972,7 +1018,9 @@ def synth_v2_specific(seed_title: str,
         rec = {
             "id": str(uuid.uuid4()),
             "question": question,
-            "answer": ans_label,
+            "answer": ans_label,                        # canonical (back-compat)
+            "valid_answers": valid_labels,              # NEW: any of these is correct
+            "valid_answer_qids": valid_qids,            # NEW: for QID-based eval
             "answer_type": spec["name"],
             "required_entities": [seed_label, ans_label],
             "intermediate_entities": [seed_label],
@@ -1299,9 +1347,21 @@ def main():
 
             # LLM 预筛(可选)
             if args.screen_llm or args.screen_llm_tag_only:
+                # Per-answer-type screener strength: advisor / employer / educated_at
+                # are far more prone to "0-tool LLM 假赢" because Gemini has
+                # memorized lots of academic genealogy + institutional affiliation.
+                # Use a higher N_samples for these to catch stochastic guesses.
+                # v3 baseline (3 samples) missed most advisor leaks per the N=200
+                # post-mortem (0 advisor in A_clean / 15 synth). Bump to 10 for
+                # advisor / employer / educated_at.
+                _atype = rec.get('answer_type', '')
+                if _atype in ('doctoral_advisor', 'employer', 'educated_at'):
+                    _samples = max(args.screen_aggressive_samples, 10)
+                else:
+                    _samples = args.screen_aggressive_samples
                 guessable, llm_resp = llm_can_answer_without_tools(
                     rec["question"], rec["answer"],
-                    aggressive_samples=args.screen_aggressive_samples,
+                    aggressive_samples=_samples,
                 )
                 if guessable:
                     if args.screen_llm:

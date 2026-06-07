@@ -1,0 +1,568 @@
+[category] walking 5 categories sitelinks=[3,10] recurse_depth=0 target=200
+  [cat] Category:20th-century Russian mathematicians: 50 raw members
+  [cat] Category:Soviet mathematicians: 50 raw members
+  [cat] Category:Italian mathematicians: 50 raw members
+  [cat] Category:French mathematicians: 50 raw members
+  [cat] Category:Hungarian physicists: 35 raw members
+  [cat] total unique candidates before sitelink filter: 217
+  [http] 429 on attempt 1; sleeping 28.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [cat] kept 129 after sitelink filter [3,10]
+[category] got 129 candidate seeds
+[main] mode=specific  n=50  freq_cap=13
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[ok] Valentin Afraimovich: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematical analy' A='Leonid Shilnikov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+[ok] Matest M. Agrest: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; was e' A='Kniažycy' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alexei Borisovich Aleksandrov: Q='Identify a person matching all of these clues: works as a mathematician; received the Salem Prize; w' A='Viktor Khavin' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Anton Alekseev (mathematician): LLM guessed correctly without tools — answer='Ludvig Faddeev' llm_said="A=NO('Stanislav Smirnov') | B1=no('Ludwig Fad') | B2=no('Lud"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 5.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Vladimir Alekseev (mathematician): LLM guessed correctly without tools — answer='Andrey Kolmogorov' llm_said="A=NO('unknown') | B1=HIT('Andrey')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 22.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Anatoliy Boldyrev: LLM guessed correctly without tools — answer='Yevgraf Fyodorov' llm_said="A=NO('Ev') | B1=HIT('Evgraf')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 23.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Konstantin Andreev: LLM guessed correctly without tools — answer='Imperial Moscow University' llm_said="A=NO('Constraint 2') | B1=no('Education: Faculty') | B2=no('"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 15.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Anatoli N. Andrianov: LLM guessed correctly without tools — answer='Saint Petersburg State University' llm_said="A=NO('Leningrad State') | B1=no('') | B2=HIT('Saint Petersbu"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 20.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Yuri Babayev: Q='Identify a person matching all of these clues: works as a physicist and engineer; works in nuclear p' A='MSU Faculty of Physics' variant=v2_specific_educated_at type=educated_at
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Nikolai Bakhvalov: LLM guessed correctly without tools — answer='Andrey Kolmogorov' llm_said="A=NO('') | B1=no('') | B2=no('') | B3=no('') | B4=no('') | B"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 13.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Nail Bakirov: Q='Identify a person matching all of these clues: works as a mathematician and statistician; works in p' A='Ildar Ibragimov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Serguei Barannikov: LLM guessed correctly without tools — answer='Vladimir Arnold' llm_said="A=NO('And') | B1=no('Paris or Lyon') | B2=no('at MSU Faculty"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 16.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Victor Batyrev: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; rece' A='Vasily Iskovskikh' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 1.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[ok] Natalia Berloff: Q='Identify a person matching all of these clues: works as a physicist and mathematician; works in appl' A='Louis Norberg Howard' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Sergei Viktorovich Bochkarev: Q='Identify a person matching all of these clues: works as a mathematician; works in function theory an' A='Pyotr Ulyanov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Vladimir Bogachev: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Oleg Smolyanov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+[ok] Fedor Bogomolov: Q='Identify a person matching all of these clues: works as a mathematician and academic; works in algeb' A='Sergei Novikov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Andrei Bolibrukh: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Mikhail Postnikov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Sergey Bolotin: all_props_banned_or_missing: doctoral_advisor:no_claim; employer:strength_lost_after_strip(too_weak(strong=0 medium=1 weak=1)); educated_at:strength_lost_after_strip(too_weak(strong=0 medium=1 weak=1)); birthplace_city:no_claim; notable_work:no_claim; award_received:no_claim
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Zenon Borevich: LLM guessed correctly without tools — answer='Dmitry Faddeev' llm_said="A=NO('unknown') | B1=no('D') | B2=HIT('Dmitry')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 21.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Victor Borisov: all_props_banned_or_missing: doctoral_advisor:no_claim; employer:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=2)); educated_at:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=2)); birthplace_city:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=2)); notable_work:no_claim; award_received:no_claim
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+[ok] Alexei Borodin: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Alexandre Kirillov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[screened] Aleksandr Borovkov: LLM guessed correctly without tools — answer='Andrey Kolmogorov' llm_said="A=GUESSED('Andrey') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Dmitri Burago: Q='Identify a person matching all of these clues: works as a mathematician; works in geometry; received' A='Anatoly Vershik' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Yuri Burago: Q='Identify a person matching all of these clues: works as a mathematician; works in differential geome' A='Victor Zalgaller' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 5.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Vladimir Buslaev: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; rece' A='Olga Ladyzhenskaya' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Aleksei Chernavskii: LLM guessed correctly without tools — answer='Moscow' llm_said="A=GUESSED('Moscow') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alexander Alexandrovich Chuprov: Q='Identify a person matching all of these clues: works as a statistician and economist; works in stati' A='Peter the Great Saint Petersburg State Polytechnical University' variant=v2_specific_employer type=employer
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Roland Dobrushin: LLM guessed correctly without tools — answer='Andrey Kolmogorov' llm_said="A=GUESSED('Andrey Kolmogorov') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[ok] Boris Dubrovin (mathematician): Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Sergei Novikov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Maleyka Abbaszadeh: Q='Identify a person matching all of these clues: works as a mathematician and politician; received the' A='Lomonosov Moscow State University' variant=v2_specific_educated_at type=educated_at
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alexander Abrosimov: Q='Identify a person matching all of these clues: works as a mathematician and pedagogue; works in comp' A='Boris Shabat' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Vadym Adamyan: LLM guessed correctly without tools — answer='Mark Krein' llm_said="A=NO('') | B1=HIT('Mark Kre')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 23.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Igor Dmitrievich Ado: LLM guessed correctly without tools — answer='Nikolai Chebotaryov' llm_said="A=GUESSED('Nik') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Mikhail Agranovich (mathematician): Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; worke' A='Dmitrii Menshov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Helen Popova Alderson: Q='Identify a person matching all of these clues: works as a mathematician and translator; worked at Un' A='Baku' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 17.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Vladimir Andrunakievich: Q='Identify a person matching all of these clues: works as a mathematician and pedagogue; works in alge' A='Aleksandr Kurosh' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Norair Arakelian: LLM guessed correctly without tools — answer='Mkhitar Jrbashyan' llm_said="A=NO('M') | B1=no('received') | B2=no('M') | B3=HIT('Mkhitar"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Suren Arakelov: LLM guessed correctly without tools — answer='Igor Shafarevich' llm_said="A=GUESSED('Igor Shafare') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Alexander Arhangelskii: LLM guessed correctly without tools — answer='Pavel Aleksandrov' llm_said="A=NO('Aleksandr Ar') | B1=no('Alexander') | B2=no('') | B3=H"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Sergei N. Artemov: LLM guessed correctly without tools — answer='Lomonosov Moscow State University' llm_said="A=GUESSED('Moscow State') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Shavkat Ayupov: Q='Identify a person matching all of these clues: works as a mathematician; works in functional analysi' A='Tashmukhamed Alievich Sarymsakov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Viacheslav Belavkin: Q='Identify a person matching all of these clues: works as a mathematician and physicist; works in appl' A='Ruslan Stratonovich' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Valentin Belousov: Q='Identify a person matching all of these clues: works as a mathematician and pedagogue; works in alge' A='Aleksandr Kurosh' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+[screened] Felix Berezin: LLM guessed correctly without tools — answer='Israel Gelfand' llm_said="A=GUESSED('Israel Gelfand') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Leonid Berlyand: Q='Identify a person matching all of these clues: works as a mathematician; worked at Pennsylvania Stat' A='Evgeny Hruslov' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Mikhail Birman: LLM guessed correctly without tools — answer='Saint Petersburg State University' llm_said="A=NO('unknown') | B1=no('') | B2=HIT('Saint Petersburg State"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 20.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Meyer Bockstein: LLM guessed correctly without tools — answer='Pavel Aleksandrov' llm_said="A=NO('Nikolai Lob') | B1=no('Lev Pont') | B2=no('') | B3=HIT"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[screened] Rifkat Bogdanov: LLM guessed correctly without tools — answer='Vladimir Arnold' llm_said="A=GUESSED('Vladimir Arnold') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alexander Bogomolny: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Gregory Eskin' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Oleksandr Boichuk: LLM guessed correctly without tools — answer='Yurii Mitropolskiy' llm_said="A=NO('unknown') | B1=no('') | B2=no('Mykhailo') | B3=no('') "
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 16.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Ilya Nikolaevich Bronshtein: all_props_banned_or_missing: doctoral_advisor:no_claim; employer:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=2)); educated_at:no_claim; birthplace_city:no_claim; notable_work:no_claim; award_received:no_claim
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 26.0s
+[ok] Boris Bukreev: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Lazarus Fuchs' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 4.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Vladimir Burkov: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='V.A. Trapeznikov Institute of Control Sciences' variant=v2_specific_employer type=employer
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Celestyn Burstin: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; was e' A='Belarusian State University' variant=v2_specific_employer type=employer
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+[skip] List of Italian mathematicians: insufficient_clues
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Claudio Baiocchi: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Gavignano' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 17.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[ok] Stefano Bianchini: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; recei' A='Alberto Bressan' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Anna Maria Bigatti: LLM guessed correctly without tools — answer='Lorenzo Robbiano' llm_said="A=NO('unknown') | B1=no('') | B2=no('Edoardo Ves') | B3=HIT("
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Blasius of Parma: Q='Identify a person matching all of these clues: works as a philosopher and mathematician; worked at U' A='Parma' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+[skip] Teofilo Bruni: clue_set_too_weak(too_weak(strong=0 medium=0 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Antonio Cagnoli: Q='Identify a person matching all of these clues: works as a astronomer and diplomat; works in astronom' A='Zakynthos' variant=v2_specific_birthplace_city type=birthplace_city
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 17.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[screened] Lucia Caporaso: LLM guessed correctly without tools — answer='Joe Harris' llm_said="A=NO('unknown') | B1=HIT('Joe Harris')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 21.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alessandra Carbone: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Rohit Jivanlal Parikh' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 5.0s
+[ok] Antonio Collalto (mathematician): Q='Identify a person matching all of these clues: works as a mathematician; held the position of rector' A='University of Padua' variant=v2_specific_employer type=employer
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Maria Colombo (mathematician): Q='Identify a person matching all of these clues: works as a mathematician; received the Bartolozzi Pri' A='Luigi Ambrosio' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Caterina Consani: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Claudio Pedrini' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Alessio Corti: Q='Identify a person matching all of these clues: works as a mathematician; received the Whitehead Priz' A='János Kollár' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 1.0s
+[skip] Pietro Cossali: clue_set_too_weak(too_weak(strong=0 medium=1 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Giuseppe Da Prato: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Roberto Tauraso' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 28.0s
+[ok] Cristiana De Filippis: Q='Identify a person matching all of these clues: works as a mathematician; received the EMS Prize and ' A='Jan Kristensen' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 1.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Daniela De Silva: Q='Identify a person matching all of these clues: works as a mathematician; received the Sadosky Prize;' A='David Jerison' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Giulia Di Nunno: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Eugenio Regazzini' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Sandra Di Rocco: Q='Identify a person matching all of these clues: works as a mathematician; worked at Royal Institute o' A='Andrew Sommese' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 3.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Serena Dipierro: Q='Identify a person matching all of these clues: works as a mathematician; received the Australian Mat' A='Andrea Malchiodi' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Cornelia Fabri: LLM guessed correctly without tools — answer='University of Pisa' llm_said="A=NO('') | B1=no('Scuola') | B2=no('Sc') | B3=no('Sc') | B4="
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 12.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Giovanni Fagnano: LLM guessed correctly without tools — answer='Senigallia' llm_said="A=GUESSED('Senigall') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 25.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Anna Fino: Q='Identify a person matching all of these clues: works as a mathematician; studied under Simon Montagu' A='University of Turin' variant=v2_specific_educated_at type=educated_at
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Vincenzo Flauti: all_props_banned_or_missing: doctoral_advisor:no_claim; employer:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=1)); educated_at:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=1)); birthplace_city:strength_lost_after_strip(too_weak(strong=0 medium=0 weak=1)); notable_work:no_claim; award_received:no_claim
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Giovanni Forni: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; recei' A='John Mather' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 1.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Elena Freda: clue_set_too_weak(too_weak(strong=0 medium=0 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Adriana Garroni: LLM guessed correctly without tools — answer='Rome' llm_said="A=NO('unknown') | B1=HIT('Rome')"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 22.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Patrizia Gianni: LLM guessed correctly without tools — answer='University of Pisa' llm_said="A=GUESSED('University of Pisa') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+[skip] Giovanni Gherardi: clue_set_too_weak(too_weak(strong=0 medium=0 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Jehan Adam: clue_set_too_weak(too_weak(strong=0 medium=0 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[skip] Jean Bouguer: clue_set_too_weak(too_weak(strong=0 medium=0 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Laurence Broze: Q='Identify a person matching all of these clues: works as a statistician and economist; received the O' A='Simone Huyberechts' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 2.0s
+[skip] Johannes Buteo: clue_set_too_weak(too_weak(strong=0 medium=0 weak=2))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Mireille Capitaine: LLM guessed correctly without tools — answer='Michel Ledoux' llm_said="A=NO('unknown') | B1=no(').\\n        *') | B2=no('- Centre n"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 18.0s
+[skip] Anna Cartan: clue_set_too_weak(too_weak(strong=0 medium=1 weak=1))
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[screened] Emmanuel Carvallo: LLM guessed correctly without tools — answer='École polytechnique' llm_said="A=GUESSED('École Polytechnique') | B=skipped"
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 24.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Raphaël Cerf: Q='Identify a person matching all of these clues: works as a mathematician; works in mathematics; recei' A='Alain Berlinet' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+  [http] 429 on attempt 1; sleeping 29.0s
+[skip] Charles Pierre Trémaux: insufficient_clues
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+  [http] 429 on attempt 1; sleeping 30.0s
+  [http] 429 on attempt 2; sleeping 27.0s
+[ok] Marie Charpentier: Q='Identify a person matching all of these clues: works as a mathematician and university teacher; work' A='Paul Montel' variant=v2_specific_doctoral_advisor type=doctoral_advisor
+
+wrote 50 Q-A pairs (14 skipped) -> /scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/data/synth/wiki_2hop_fix3_v2.jsonl
+  LLM-screen dropped: 30 additional candidates (LLM answered correctly without tools)
+  v3 weak-clue skips (seed had no STRONG/MEDIUM clue): 8
+  v2 banned-skips (all props blocked): 4
+  v2 answer-type distribution:
+    doctoral_advisor: 38
+    birthplace_city: 5
+    employer: 4
+    educated_at: 3
+  v2 answer-label distribution (top 10):
+    sergei novikov: 2
+    aleksandr kurosh: 2
+    leonid shilnikov: 1
+    kniažycy: 1
+    viktor khavin: 1
+    msu faculty of physics: 1
+    ildar ibragimov: 1
+    vasily iskovskikh: 1
+    louis norberg howard: 1
+    pyotr ulyanov: 1
