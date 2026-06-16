@@ -1,0 +1,20 @@
+{
+  "source": "dataset/wiki_2hop_batch4/sft_positive_messy.jsonl",
+  "rule": {
+    "n_tool_calls": ">= 3",
+    "n_repeats": "<= 5",
+    "n_turns": "<= 15"
+  },
+  "input_records": 90,
+  "kept_records": 13,
+  "rejected_records": 77,
+  "rejection_reasons": {
+    "too_many_repeats": 7,
+    "too_few_tool_calls_memory_like": 70
+  },
+  "outputs": {
+    "filtered": "dataset/wiki_2hop_batch4/sft_positive_messy_filtered.jsonl",
+    "rejected": "dataset/wiki_2hop_batch4/sft_positive_messy_rejected.jsonl",
+    "clean_plus_filtered_messy": "dataset/wiki_2hop_batch4/sft_positive_clean_plus_filtered_messy.jsonl"
+  }
+}

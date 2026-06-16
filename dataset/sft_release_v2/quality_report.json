@@ -1,0 +1,46 @@
+{
+  "release": "sft_release_v2",
+  "created_from": [
+    "dataset/sft_release_v1",
+    "dataset/wiki_2hop_batch4/sft_positive_clean_plus_filtered_messy.jsonl"
+  ],
+  "total_records": 225,
+  "v1_records": 121,
+  "batch4_added_records": 104,
+  "source_batch_counts": {
+    "wiki_2hop_fix12": 14,
+    "wiki_2hop_fix3_v2": 10,
+    "wiki_2hop_batch2": 37,
+    "wiki_2hop_batch3": 60,
+    "wiki_2hop_batch4": 104
+  },
+  "answer_type_counts": {
+    "doctoral_advisor": 140,
+    "birthplace_city": 52,
+    "employer": 29,
+    "educated_at": 4
+  },
+  "batch4_quality_bucket_counts": {
+    "A_clean_success": 91,
+    "A2_messy_success": 13
+  },
+  "batch4_missing_source_records": [],
+  "quality_checks": {
+    "duplicate_task_ids": 0,
+    "train_metadata_same_ids": true,
+    "records_missing_answer_tag": 0,
+    "problems_count": 0,
+    "problems_sample": []
+  },
+  "tool_call_stats_all_metadata": {
+    "min": 3,
+    "median": 4,
+    "mean": 4.14,
+    "max": 21
+  },
+  "files": {
+    "train": "dataset/sft_release_v2/train.jsonl",
+    "metadata": "dataset/sft_release_v2/metadata.jsonl",
+    "report": "dataset/sft_release_v2/quality_report.json"
+  }
+}
