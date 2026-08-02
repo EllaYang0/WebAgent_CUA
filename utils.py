@@ -45,15 +45,19 @@ def get_access_token():
 
 async def call_llm(sem, prompt, max_tokens, model_name, client=None, mode='agent'):
     if mode == 'agent':
-        LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
         LLM_BASE_URL = os.getenv('AGENT_LLM_BASE_URL')
 
     elif mode == 'summary':
-        LLM_API_KEY = get_access_token()  # 使用 ADC 获取 token
-        LLM_BASE_URL = os.getenv('SUMMARY_LLM_BASE_URL', os.getenv('AGENT_LLM_BASE_URL'))
+        LLM_BASE_URL = os.getenv('SUMMARY_LLM_BASE_URL')
+
+    elif mode == 'eval':
+        LLM_BASE_URL = os.getenv('EVAL_LLM_BASE_URL', os.getenv('SUMMARY_LLM_BASE_URL'))
 
     else:
         raise ValueError(f"Unsupported mode: {mode}")
+
+    is_vertex = bool(LLM_BASE_URL and "aiplatform.googleapis.com" in LLM_BASE_URL)
+    LLM_API_KEY = get_access_token() if is_vertex else os.getenv("OPENAI_API_KEY", "dummy")
         
 
     async with sem['llm']:
@@ -68,14 +72,37 @@ async def call_llm(sem, prompt, max_tokens, model_name, client=None, mode='agent
                 )
                 # Gemini OpenAI 兼容模式不支持 stop 和 presence_penalty
                 # safety_settings 走 extra_body 透传到 Vertex AI 后端
-                response = await client.chat.completions.create(
-                    model=model_name,
-                    messages=prompt,
-                    temperature=1.0,
-                    top_p=0.95,
-                    max_tokens=max_tokens,
-                    extra_body={"safety_settings": GEMINI_SAFETY_SETTINGS},
-                )
+                request_kwargs = {
+                    "model": model_name,
+                    "messages": prompt,
+                    "temperature": 1.0,
+                    "top_p": 0.95,
+                    "max_tokens": max_tokens,
+                }
+                if is_vertex:
+                    extra_body = {"safety_settings": GEMINI_SAFETY_SETTINGS}
+                    # Gemini's real chain-of-thought is billed as hidden
+                    # reasoning_tokens and never reaches message.content — so teacher
+                    # trajectories had no reasoning at all. Setting include_thoughts
+                    # makes Vertex return the model's actual thought SUMMARY as
+                    # visible content, already wrapped in <think>...</think>, before
+                    # the tool_call. This is the model's genuine reasoning, at 100%
+                    # coverage — far better than prompting it to re-narrate (which
+                    # topped out ~50% and only on non-opening turns).
+                    #
+                    # Only the agent gets this: it is the layer whose decisions we
+                    # train on. The summarizer emits JSON and the eval judge needs no
+                    # trace. NOTE: include_thoughts (thinking_config) and
+                    # reasoning_effort are mutually exclusive on this endpoint — do
+                    # not set both. thinking_budget caps the thought length.
+                    if mode == "agent" and os.getenv("AGENT_INCLUDE_THOUGHTS", "1") == "1":
+                        thinking_config = {"include_thoughts": True}
+                        budget = os.getenv("AGENT_THINKING_BUDGET", "")
+                        if budget:
+                            thinking_config["thinking_budget"] = int(budget)
+                        extra_body["google"] = {"thinking_config": thinking_config}
+                    request_kwargs["extra_body"] = extra_body
+                response = await client.chat.completions.create(**request_kwargs)
 
                 # Inspect what Gemini actually returned. Empty/None content with
                 # finish_reason='content_filter' (or sometimes 'stop' but content

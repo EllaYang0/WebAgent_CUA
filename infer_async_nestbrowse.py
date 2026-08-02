@@ -15,6 +15,7 @@ from toolkit.tool_search import Search
 from toolkit.mcp_client import mcp_client
 from toolkit.browser_hybrid import Visit, Click, Fill
 from utils import read_jsonl, count_tokens, call_llm, lenient_json_extract
+from scripts.groundedness import evaluate, to_sft_record
 
 
 def is_url_navigation_task(data: dict) -> bool:
@@ -154,12 +155,45 @@ Respond with a JSON object:
 Output only the JSON, nothing else."""
 
     messages = [{"role": "user", "content": eval_prompt}]
-    response = await call_llm(sem, messages, 512, os.getenv("MODEL_NAME"))
+    response = await call_llm(
+        sem,
+        messages,
+        512,
+        os.getenv("EVAL_MODEL_NAME"),
+        mode="eval",
+    )
 
     result = lenient_json_extract(response)
     if result is None:
         return False, f"JSON unrecoverable, raw: {(response or '')[:150]}"
     return bool(result.get('correct', False)), result.get('reasoning') or result.get('reason') or ''
+
+
+TAB_LINE_RE = re.compile(r'^\s*-\s*(\d+):', re.MULTILINE)
+
+
+async def reset_browser_state(client, lock):
+    """Return the browser to a single blank tab between tasks.
+
+    `browser_navigate` only acts on the current tab, so tabs opened by the previous
+    task (target=_blank links, etc.) survive and leak their snapshots into the next
+    task. Close every tab but the first, then hard-navigate that one to about:blank
+    so no SPA state carries over.
+    """
+    async with lock:
+        listing = await client.call_tool('browser_tabs', {'action': 'list'})
+
+    text = "".join(getattr(c, 'text', '') or '' for c in (listing.content or []))
+    indices = sorted({int(m) for m in TAB_LINE_RE.findall(text)})
+    # Close from the highest index down — closing shifts the indices above it.
+    for index in reversed(indices[1:]):
+        async with lock:
+            await client.call_tool('browser_tabs', {'action': 'close', 'index': index})
+    if len(indices) > 1:
+        print(f"[reset_browser_state] closed {len(indices) - 1} stray tab(s)")
+
+    async with lock:
+        await client.call_tool('browser_navigate', {'url': 'about:blank'})
 
 
 async def call_tool(sem, tool_name: str, tool_args: dict, client, lock):
@@ -207,12 +241,13 @@ async def agentic_loop(sem, data, messages, client, lock):
                 # Same-SPA 分支会跳过 browser_navigate，旧表单状态会污染新 task。
                 # 这里强制 hard-navigate 到 about:blank 清空浏览器状态，再让 init_visit
                 # 真正跳转到目标 start_url。
+                # 上一 task 也可能留下额外的 tab（点开的外链等），browser_navigate 只作用于
+                # 当前 tab，留下的 tab 会让下一 task 的 snapshot 串台。先把多余 tab 关掉。
                 try:
-                    async with lock:
-                        await client.call_tool('browser_navigate', {'url': 'about:blank'})
-                    print(f"[agentic_loop] reset browser to about:blank for task_id={task_id}")
+                    await reset_browser_state(client, lock)
+                    print(f"[agentic_loop] reset browser state for task_id={task_id}")
                 except Exception as reset_err:
-                    print(f"[agentic_loop] about:blank reset failed (non-fatal): {repr(reset_err)}")
+                    print(f"[agentic_loop] browser reset failed (non-fatal): {repr(reset_err)}")
 
                 # Only do an initial visit if the task has a concrete start_url (navi_bench).
                 # browsecomp tasks have start_url=None — calling visit(None) triggers
@@ -250,7 +285,13 @@ async def agentic_loop(sem, data, messages, client, lock):
                     termination = 'max_length_exceeded'
                     break
 
-                response = await call_llm(sem, record, int(os.getenv("MAX_SINGLE_GEN_TOKENS")), os.getenv("MODEL_NAME"))
+                response = await call_llm(
+                    sem,
+                    record,
+                    int(os.getenv("MAX_SINGLE_GEN_TOKENS")),
+                    os.getenv("AGENT_MODEL_NAME"),
+                    mode="agent",
+                )
                 print(f"[agentic_loop] task_id={task_id} turn={turn} response_len={len(response) if response else 'None/empty'}", flush=True)
 
                 if not response:
@@ -268,6 +309,28 @@ async def agentic_loop(sem, data, messages, client, lock):
                         'trajectory': trajectory,
                         'termination': 'llm_response_error'
                     }
+
+                # Normalize the reasoning tag. Vertex's include_thoughts returns the
+                # thought summary sometimes as <think>...</think> and sometimes as
+                # ...</think> with the opening tag dropped (same asymmetry Qwen's
+                # template produces). Restore the opening tag so every reasoned turn
+                # is a symmetric <think>...</think> block.
+                if "</think>" in response and "<think>" not in response:
+                    response = "<think>\n" + response
+
+                # Cut everything after the first </tool_call>. Gemini has no `stop`
+                # support on the Vertex OpenAI-compat endpoint, so it sometimes keeps
+                # going and role-plays the whole dialogue — inventing <tool_response>
+                # blocks with fabricated search results (one smoke-test turn produced
+                # 14k characters of them). Only the first tool call is executed anyway,
+                # so the tail is pure fabrication; storing it would poison the SFT data
+                # with hallucinated observations.
+                if "</tool_call>" in response:
+                    head, _, tail = response.partition("</tool_call>")
+                    response = head + "</tool_call>"
+                    if tail.strip():
+                        print(f"[WARN] truncated {len(tail)} chars of self-continued "
+                              f"output after </tool_call>", flush=True)
 
                 record.append({"role": "assistant", "content": response})
 
@@ -473,6 +536,11 @@ async def main(sem, rollout_count, input_path, output_path):
     success_path    = os.path.join(out_dir, "success.jsonl")
     failure_path    = os.path.join(out_dir, "failure.jsonl")
     trajectory_path = os.path.join(out_dir, "trajectory.jsonl")
+    # The groundedness gate runs inline so a run reports its usable yield as it goes,
+    # instead of us discovering post-hoc that 92% of "successes" are unusable.
+    # success.jsonl semantics are left untouched so eval numbers stay comparable.
+    clean_path      = os.path.join(out_dir, "clean.jsonl")
+    gate_path       = os.path.join(out_dir, "gate.jsonl")
 
     visited_counter = Counter()
     if os.path.exists(success_path):
@@ -491,30 +559,71 @@ async def main(sem, rollout_count, input_path, output_path):
             task, start_url, gt_urls = parse_task_item(data)
             is_nav = is_url_navigation_task(data)
             instruction = ANSWER_INSTRUCTION_URL if is_nav else ANSWER_INSTRUCTION_INFO
-            system_prompt = SYSTEM_PROMPT_NAVI.format(answer_instruction=instruction)
+            # SYSTEM_PROMPT_NAVI assumes the agent already sits on a start page and bans
+            # `search`. That holds for navi_bench; for research tasks (start_url=None) it
+            # left no legal opening move, so the agent invented refs and guessed URLs.
+            base_prompt = SYSTEM_PROMPT_NAVI if start_url else SYSTEM_PROMPT_RESEARCH
+            system_prompt = base_prompt.format(answer_instruction=instruction)
+            # Research questions are phrased with bare first-person-reading predicates
+            # ("works as a mathematician; was born in the 1960s"). Gemini's thought
+            # summary picks up that grammatical person and reasons AS the subject
+            # ("as a mathematician, my birthplace..."). Reframing the question to an
+            # explicit third-person investigation keeps the reasoning in the agent's
+            # voice without touching the stored synthesis data.
+            user_content = task
+            if not start_url:
+                user_content = (
+                    "Identify the individual described by the following clues. This "
+                    "person is a third party you must find by researching the web — "
+                    "they are not you. After you have identified and verified them, "
+                    "answer the question.\n\n" + task
+                )
             messages = [
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": task}
+                {"role": "user", "content": user_content}
             ]
             task_inputs.append((data, messages))
             pending_counter[task_id] += 1
 
+    eval_limit = int(os.getenv("EVAL_LIMIT", "0") or "0")
+    if eval_limit > 0:
+        original_task_count = len(task_inputs)
+        task_inputs = task_inputs[:eval_limit]
+        print(f"EVAL_LIMIT={eval_limit}: running {len(task_inputs)} of {original_task_count} tasks")
+
     print(f"Total number of tasks: {len(task_inputs)}")
 
     # ONE shared mcp_client for the whole run (see agentic_loop comment).
+    run_id = os.path.basename(out_dir)
+    agent_model = os.getenv("AGENT_MODEL_NAME", "")
+    agent_base_url = os.getenv("AGENT_LLM_BASE_URL", "")
+    print(f"[run] agent_model={agent_model} base_url={agent_base_url}", flush=True)
+    n_attempted = n_success = n_clean = 0
+    reject_counter = Counter()
+
     async with mcp_client(server_url=BROWSER_SERVER_URL) as (client, lock):
       with open(success_path, "a") as f_success, \
          open(failure_path, "a") as f_failure, \
-         open(trajectory_path, "a") as f_traj:
+         open(trajectory_path, "a") as f_traj, \
+         open(clean_path, "a") as f_clean, \
+         open(gate_path, "a") as f_gate:
 
         for (data, messages) in tqdm(task_inputs, total=len(task_inputs), desc="Navi-Bench Rollout ..."):
             try:
                 result = await agentic_loop(sem, data, messages, client, lock)
 
+                # Stamp the producing model into every record. Nothing in the output
+                # files used to say which model wrote them, so telling a Gemini
+                # teacher-collection run apart from a Qwen student-eval run meant
+                # forensics on log filenames, mtimes and </think> tag shapes.
+                result['agent_model'] = agent_model
+                result['agent_base_url'] = agent_base_url
+
                 trajectory_record = {
                     'task_id': result['task_id'],
                     'task': result['task'],
                     'task_type': result.get('task_type'),
+                    'agent_model': agent_model,
                     'termination': result['termination'],
                     'visited_urls': result['visited_urls'],
                     'gt_urls': result['gt_urls'],
@@ -534,6 +643,37 @@ async def main(sem, rollout_count, input_path, output_path):
                     f_failure.flush()
                     os.fsync(f_failure.fileno())
 
+                # --- groundedness gate ---------------------------------------
+                # Ground truth lives on the dataset row, not on the rollout, and the
+                # gate needs it to tell "read the answer off the page" from
+                # "produced a string that happens to be right".
+                gate_input = dict(result)
+                gate_input.setdefault('answer', data.get('answer'))
+                gate_input.setdefault('valid_answers', data.get('valid_answers') or [])
+                gate_input.setdefault('answer_type', data.get('answer_type', ''))
+
+                verdict = evaluate(gate_input, trajectory_record)
+                f_gate.write(json.dumps(verdict, ensure_ascii=False) + "\n")
+                f_gate.flush()
+
+                n_attempted += 1
+                n_success += int(result['termination'] == 'answer')
+                if verdict['clean']:
+                    n_clean += 1
+                    f_clean.write(json.dumps(to_sft_record(gate_input, verdict, run_id),
+                                             ensure_ascii=False) + "\n")
+                    f_clean.flush()
+                    os.fsync(f_clean.fileno())
+                else:
+                    reject_counter.update(verdict['reasons'])
+
+                top_reasons = ", ".join(f"{r}={n}" for r, n in reject_counter.most_common(3))
+                print(f"[gate] task={verdict['task_id']} clean={verdict['clean']} "
+                      f"grounding={verdict['grounding']} reasons={verdict['reasons']}", flush=True)
+                print(f"[gate] RUNNING attempted={n_attempted} raw_success={n_success} "
+                      f"clean={n_clean} clean_rate={n_clean / n_attempted:.2%} "
+                      f"| top_rejects: {top_reasons or 'none'}", flush=True)
+
             except Exception as e:
                 exception_type = type(e).__name__
                 exception_message = str(e)
@@ -545,7 +685,15 @@ if __name__ == '__main__':
     BROWSER_SERVER_URL = "http://localhost:3006/sse"
 
     GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID", "msagentrt")
-    AGENT_LLM_BASE_URL = f"https://aiplatform.googleapis.com/v1beta1/projects/{GCP_PROJECT_ID}/locations/global/endpoints/openapi"
+    DEFAULT_VERTEX_BASE_URL = (
+        f"https://aiplatform.googleapis.com/v1beta1/projects/{GCP_PROJECT_ID}/locations/global/endpoints/openapi"
+    )
+    AGENT_LLM_BASE_URL = os.getenv(
+        "AGENT_LLM_BASE_URL",
+        DEFAULT_VERTEX_BASE_URL,
+    )
+    SUMMARY_LLM_BASE_URL = os.getenv("SUMMARY_LLM_BASE_URL", DEFAULT_VERTEX_BASE_URL)
+    EVAL_LLM_BASE_URL = os.getenv("EVAL_LLM_BASE_URL", SUMMARY_LLM_BASE_URL)
     tokenizer = tiktoken.get_encoding("cl100k_base")
 
     # ========================================
@@ -554,8 +702,15 @@ if __name__ == '__main__':
     MAX_AGENT_LEN = 128 * 1024
     MAX_SINGLE_GEN_TOKENS = 8192
     MAX_SUMMARY_SHARD_LEN = 64 * 1024
-    benchmark_name = "wiki_2hop_batch3"
-    MODEL_NAME = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
+    # BENCHMARK_NAME picks the input file, RUN_ID the results directory. Keeping them
+    # separate lets a probe re-run an existing benchmark into a fresh directory (the
+    # resume logic keys off results/<RUN_ID>/success.jsonl).
+    benchmark_name = os.getenv("BENCHMARK_NAME", "wiki_2hop_v3_scaled")
+    run_id = os.getenv("RUN_ID", benchmark_name)
+    DEFAULT_GEMINI_MODEL = os.getenv("MODEL_NAME", "google/gemini-3.1-pro-preview")
+    AGENT_MODEL_NAME = os.getenv("AGENT_MODEL_NAME", DEFAULT_GEMINI_MODEL)
+    SUMMARY_MODEL_NAME = os.getenv("SUMMARY_MODEL_NAME", DEFAULT_GEMINI_MODEL)
+    EVAL_MODEL_NAME = os.getenv("EVAL_MODEL_NAME", DEFAULT_GEMINI_MODEL)
     MAX_WORKERS = 1
     sem = {
         'session': asyncio.Semaphore(MAX_WORKERS),
@@ -565,17 +720,23 @@ if __name__ == '__main__':
     # ========================================
 
     os.environ["AGENT_LLM_BASE_URL"] = AGENT_LLM_BASE_URL
+    os.environ["SUMMARY_LLM_BASE_URL"] = SUMMARY_LLM_BASE_URL
+    os.environ["EVAL_LLM_BASE_URL"] = EVAL_LLM_BASE_URL
     os.environ["MAX_SINGLE_GEN_TOKENS"] = str(MAX_SINGLE_GEN_TOKENS)
     os.environ["MAX_SUMMARY_SHARD_LEN"] = str(MAX_SUMMARY_SHARD_LEN)
-    os.environ["MODEL_NAME"] = MODEL_NAME
+    # Keep legacy helpers that still read MODEL_NAME on the Gemini/summary side.
+    # The outer agent now reads AGENT_MODEL_NAME explicitly.
+    os.environ["MODEL_NAME"] = SUMMARY_MODEL_NAME
+    os.environ["AGENT_MODEL_NAME"] = AGENT_MODEL_NAME
+    os.environ["SUMMARY_MODEL_NAME"] = SUMMARY_MODEL_NAME
+    os.environ["EVAL_MODEL_NAME"] = EVAL_MODEL_NAME
 
     input_path = f"./data/{benchmark_name}.jsonl"
-    # Each benchmark gets its own results subfolder so files don't accumulate flat:
-    #   results/<benchmark_name>/{success,failure,trajectory}.jsonl
-    # main() derives success_path / failure_path / trajectory_path from output_path
-    # by replacing ".jsonl" with "_<kind>.jsonl", so we point output_path at
-    # results/<benchmark_name>/results.jsonl which yields the right names.
-    out_dir = f"./results/{benchmark_name}"
+    # Each run gets its own results subfolder so files don't accumulate flat:
+    #   results/<run_id>/{success,failure,trajectory,clean,gate}.jsonl
+    # main() derives those sibling paths from output_path's directory, so we point
+    # output_path at results/<run_id>/results.jsonl.
+    out_dir = f"./results/{run_id}"
     os.makedirs(out_dir, exist_ok=True)
     output_path = f"{out_dir}/results.jsonl"
 
@@ -584,6 +745,10 @@ if __name__ == '__main__':
     click = Click()
     fill = Fill()
 
-    TOOLS_SCHEMA = [search.tool_schema, visit.tool_schema, click.tool_schema, fill.tool_schema]
+    # NOTE: there is deliberately no TOOLS_SCHEMA here. call_llm() takes no tools
+    # argument — the agent's entire tool surface is the <tools> text block inside the
+    # system prompt. A TOOLS_SCHEMA list used to sit here looking authoritative while
+    # being read by nothing, which is how `search` stayed invisible to the agent for
+    # two months. Add or remove tools in prompts.py.
 
     asyncio.run(main(sem, rollout_count, input_path, output_path))

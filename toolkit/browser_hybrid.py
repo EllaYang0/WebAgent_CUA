@@ -59,7 +59,7 @@ async def find_coordinates(screenshot_b64, description, sem):
     creds.refresh(req)
     token = creds.token
 
-    model = os.getenv("MODEL_NAME", "google/gemini-2.0-flash-001")
+    model = os.getenv("VISION_MODEL_NAME", os.getenv("SUMMARY_MODEL_NAME", "google/gemini-2.0-flash-001"))
     project = os.getenv("GCP_PROJECT_ID", "msagentrt")
     url = f"https://aiplatform.googleapis.com/v1beta1/projects/{project}/locations/global/endpoints/openapi/chat/completions"
 
@@ -372,9 +372,16 @@ async def verify_action(screenshot_b64, action_description, expected_result, sem
     creds.refresh(req)
     token = creds.token
 
-    model = os.getenv("MODEL_NAME", "google/gemini-2.0-flash-001")
+    model = os.getenv("VISION_MODEL_NAME", os.getenv("SUMMARY_MODEL_NAME", "google/gemini-2.0-flash-001"))
     project = os.getenv("GCP_PROJECT_ID", "msagentrt")
     url = f"https://aiplatform.googleapis.com/v1beta1/projects/{project}/locations/global/endpoints/openapi/chat/completions"
+    dom_evidence_text = ""
+    if dom_evidence:
+        dom_evidence_text = (
+            "DOM evidence (treat this as strong signal, it is ground truth from the live page):\n"
+            + json.dumps(dom_evidence, ensure_ascii=False)[:800]
+            + "\n\n"
+        )
 
     payload = {
         "model": model,
@@ -401,7 +408,7 @@ STRICTLY IGNORE (do NOT use as evidence of success):
 - Edge's address/URL bar, tab bar, bookmarks bar, or any browser UI chrome
 - Desktop wallpaper, noVNC/QEMU host frame, or anything outside the web page
 
-{("DOM evidence (treat this as strong signal, it is ground truth from the live page):\\n" + json.dumps(dom_evidence, ensure_ascii=False)[:800] + "\\n\\n") if dom_evidence else ""}Look at the screenshot (web content area only) and combine with any DOM evidence above. Be strict. Only return success=true if the expected result clearly occurred inside the web page. If the typed text only appears in the Windows taskbar or browser chrome, return success=false. If there's no visible change in the web page, or the action clearly missed its target, return success=false. When screenshot and DOM disagree, DOM wins.
+{dom_evidence_text}Look at the screenshot (web content area only) and combine with any DOM evidence above. Be strict. Only return success=true if the expected result clearly occurred inside the web page. If the typed text only appears in the Windows taskbar or browser chrome, return success=false. If there's no visible change in the web page, or the action clearly missed its target, return success=false. When screenshot and DOM disagree, DOM wins.
 
 Return ONLY a compact JSON object (keep reason under 20 words): {{"success": true/false, "reason": "brief explanation"}}
 Nothing else."""

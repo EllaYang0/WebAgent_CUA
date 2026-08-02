@@ -2,7 +2,18 @@ __pycache__/
 *.py[cod]
 .playwright-mcp/
 .env
+.env.eval
 .DS_Store
+
+# secrets & credentials — never commit
+*.key
+*_key.json
+
+# trained model checkpoints (large binaries, regenerate via training/qwen_sft)
+checkpoints/
+
+# run logs and their .current pointers
+logs/
 
 # partial / backup directories from interrupted runs
 dataset/*_partial*/
