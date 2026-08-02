@@ -1,7 +1,10 @@
 # WebAgent_CUA — Progress & File Map
 
-Last updated against commit `5e6fb3c` (branch `main`).
+Last updated against commit `35b1873` (branch `main`).
 Repo: https://github.com/EllaYang0/WebAgent_CUA
+**Repository root (absolute path on server):** `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/`
+
+All file paths below are absolute so they can be located directly on the server.
 
 ## Goal
 
@@ -19,8 +22,9 @@ page-summarizer LLM that turns raw page snapshots into an `Evidence in page` +
 
 - **Collection pipeline fixed and reasoning capture solved** (see below).
 - **101 clean, reasoning-bearing trajectories** collected so far into
-  `results/wiki_2hop_n200_reasoned/clean.jsonl` (birthplace-city dominated, plus
-  some doctoral-advisor / employer), gated by `scripts/groundedness.py`.
+  `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/wiki_2hop_n200_reasoned/clean.jsonl`
+  (birthplace-city dominated, plus some doctoral-advisor / employer), gated by the
+  groundedness gate.
 - Collection of the `wiki_2hop_v3_n200` pool is ongoing, run in small
   fresh-session batches to work around an MCP session-collapse issue.
 
@@ -47,73 +51,83 @@ page-summarizer LLM that turns raw page snapshots into an `Evidence in page` +
    agent's voice), per-task browser-tab reset, self-fabricated `<tool_response>`
    truncation, and a producing-model stamp on every record.
 
-## File map
+## File map (absolute paths)
 
 ### Agent / collection core
-- [infer_async_nestbrowse.py](infer_async_nestbrowse.py) — main collection loop.
-  Runs the outer agent turn loop, calls tools, resets browser state between tasks
-  (`reset_browser_state`), selects `SYSTEM_PROMPT_NAVI` vs `SYSTEM_PROMPT_RESEARCH`
-  by `start_url`, reframes research questions to third person, gates each finished
-  rollout inline (writing `clean.jsonl` + `gate.jsonl`), stamps `agent_model`, and
-  honors `BENCHMARK_NAME` / `RUN_ID` / `EVAL_LIMIT` env overrides.
-- [prompts.py](prompts.py) — all prompts. `SYSTEM_PROMPT_NAVI` (navi_bench, has a
-  start page, bans search), `SYSTEM_PROMPT_RESEARCH` (this cycle; search-first,
-  ref-provenance, `<think>`/`<tool_call>` convention, agent-voice framing), and the
-  page-summarizer prompts (`SYSTEM_PROMPT_SUMMARY_OURS`, `SUMMARY_PROMPT`).
-- [utils.py](utils.py) — `call_llm` wrapper over the Vertex OpenAI-compatible
-  endpoint. This cycle: enables `include_thoughts` for agent-mode calls
-  (`AGENT_INCLUDE_THOUGHTS`, default on; `AGENT_THINKING_BUDGET` optional) so the
-  teacher emits visible reasoning; keeps `safety_settings`.
-- [toolkit/browser_hybrid.py](toolkit/browser_hybrid.py) — hybrid DOM+visual
-  executor: the `Visit` / `Click` / `Fill` tool classes, plus vision helpers
-  (`find_coordinates`, `verify_action`, `check_dom_focus`). Prior-work file; this
-  cycle only switches the vision model to `VISION_MODEL_NAME` (falling back to
-  `SUMMARY_MODEL_NAME`) and refactors the DOM-evidence prompt injection.
-- [toolkit/tool_explore.py](toolkit/tool_explore.py) — the inner summarizer:
-  `process_response` shards a raw page and calls the summary LLM to produce the
-  `Evidence in page` + `Summary` block.
-- [toolkit/tool_search.py](toolkit/tool_search.py) — the `search` tool (Brave
-  Search API).
-- [toolkit/mcp_client.py](toolkit/mcp_client.py) — the shared Playwright-MCP SSE
-  client used for browser control.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/infer_async_nestbrowse.py`
+  — main collection loop. Runs the outer agent turn loop, calls tools, resets
+  browser state between tasks (`reset_browser_state`), selects `SYSTEM_PROMPT_NAVI`
+  vs `SYSTEM_PROMPT_RESEARCH` by `start_url`, reframes research questions to third
+  person, gates each finished rollout inline (writing `clean.jsonl` + `gate.jsonl`),
+  stamps `agent_model`, and honors `BENCHMARK_NAME` / `RUN_ID` / `EVAL_LIMIT` env
+  overrides.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/prompts.py`
+  — all prompts. `SYSTEM_PROMPT_NAVI` (navi_bench, has a start page, bans search),
+  `SYSTEM_PROMPT_RESEARCH` (this cycle; search-first, ref-provenance,
+  `<think>`/`<tool_call>` convention, agent-voice framing), and the page-summarizer
+  prompts (`SYSTEM_PROMPT_SUMMARY_OURS`, `SUMMARY_PROMPT`).
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/utils.py`
+  — `call_llm` wrapper over the Vertex OpenAI-compatible endpoint. This cycle:
+  enables `include_thoughts` for agent-mode calls (`AGENT_INCLUDE_THOUGHTS`, default
+  on; `AGENT_THINKING_BUDGET` optional) so the teacher emits visible reasoning; keeps
+  `safety_settings`.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/browser_hybrid.py`
+  — hybrid DOM+visual executor: the `Visit` / `Click` / `Fill` tool classes, plus
+  vision helpers (`find_coordinates`, `verify_action`, `check_dom_focus`). Prior-work
+  file; this cycle only switches the vision model to `VISION_MODEL_NAME` (falling
+  back to `SUMMARY_MODEL_NAME`) and refactors the DOM-evidence prompt injection.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/tool_explore.py`
+  — the inner summarizer: `process_response` shards a raw page and calls the summary
+  LLM to produce the `Evidence in page` + `Summary` block.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/tool_search.py`
+  — the `search` tool (Brave Search API).
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/toolkit/mcp_client.py`
+  — the shared Playwright-MCP SSE client used for browser control.
 
 ### Data quality / SFT tooling
-- [scripts/groundedness.py](scripts/groundedness.py) — **the unified groundedness
-  gate** (this cycle). `evaluate()` is imported by the collection loop; the CLI
-  (`--report-only` / `--out`) replays it over finished runs and reports
-  `clean_grounded_success_rate` and `reasoned_turn_rate`. Supersedes the two scripts
-  below.
-- [scripts/build_grounded_sft_v3.py](scripts/build_grounded_sft_v3.py) — older
-  grounded-SFT builder (answer-in-evidence only); kept for back-compat.
-- [scripts/audit_sft_trajectories.py](scripts/audit_sft_trajectories.py) — audits a
-  finished SFT file for ref-provenance and MCP-error problems, emits a CSV + summary.
-- [scripts/synthesis_agent.py](scripts/synthesis_agent.py) — generates the wiki
-  2-hop questions from Wikidata (clue selection, obscurity/answer filters). Prior
-  work.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/groundedness.py`
+  — **the unified groundedness gate** (this cycle). `evaluate()` is imported by the
+  collection loop; the CLI (`--report-only` / `--out`) replays it over finished runs
+  and reports `clean_grounded_success_rate` and `reasoned_turn_rate`. Supersedes the
+  two scripts below.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/build_grounded_sft_v3.py`
+  — older grounded-SFT builder (answer-in-evidence only); kept for back-compat.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/audit_sft_trajectories.py`
+  — audits a finished SFT file for ref-provenance and MCP-error problems, emits a
+  CSV + summary.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/synthesis_agent.py`
+  — generates the wiki 2-hop questions from Wikidata (clue selection,
+  obscurity/answer filters). Prior work.
 
 ### Launchers
-- [scripts/run_probe30.sh](scripts/run_probe30.sh) — launches a collection run;
-  self-sources `.env.eval` and exports credentials (so it survives tmux's stale
-  server env); writes its logfile path to `logs/<RUN_ID>.current`.
-- [scripts/watchdog_collect.sh](scripts/watchdog_collect.sh) — a resume supervisor
-  that relaunches a run only on abnormal death. NOTE: prone to respawn races if
-  launched multiple times; the current workflow drives fixed-size batches manually
-  instead.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/run_probe30.sh`
+  — launches a collection run; self-sources `.env.eval` and exports credentials (so
+  it survives tmux's stale server env); writes its logfile path to
+  `logs/<RUN_ID>.current`.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/scripts/watchdog_collect.sh`
+  — a resume supervisor that relaunches a run only on abnormal death. NOTE: prone to
+  respawn races if launched multiple times; the current workflow drives fixed-size
+  batches manually instead.
 
 ### Data & outputs
-- [data/recollect_grounded_probe_30.jsonl](data/recollect_grounded_probe_30.jsonl) —
-  30 never-before-attempted probe tasks used to validate the fixed pipeline.
-- [data/wiki_2hop_v3_n200.jsonl](data/wiki_2hop_v3_n200.jsonl) — the 200-question
-  collection pool (all `n_hops=2`).
-- `results/<RUN_ID>/` — per-run outputs: `success/failure/trajectory.jsonl`, plus
-  `clean.jsonl` (gate-passed SFT candidates) and `gate.jsonl` (per-record verdicts).
-  LFS-tracked. The active run is `results/wiki_2hop_n200_reasoned/`.
-- `dataset/sft_release_v1|v2/` — previous SFT releases (121 / 225 records) built
-  from reasoning-less trajectories; kept as a baseline for comparison.
-- [training/qwen_sft/](training/qwen_sft/) — Qwen SFT training: `convert_to_sharegpt.py`
-  (JSON messages → LLaMA-Factory ShareGPT), `qwen9b_lora_full.yaml` (Qwen3.5-9B LoRA,
-  rank 16, 3 epochs, lr 1e-4, template `qwen`), `run_train.sh`,
-  `openai_compat_transformers_server.py` (serves the LoRA for eval).
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/data/recollect_grounded_probe_30.jsonl`
+  — 30 never-before-attempted probe tasks used to validate the fixed pipeline.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/data/wiki_2hop_v3_n200.jsonl`
+  — the 200-question collection pool (all `n_hops=2`).
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/<RUN_ID>/`
+  — per-run outputs: `success/failure/trajectory.jsonl`, plus `clean.jsonl`
+  (gate-passed SFT candidates) and `gate.jsonl` (per-record verdicts). LFS-tracked.
+  The active run is
+  `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/results/wiki_2hop_n200_reasoned/`.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/dataset/sft_release_v1/` and
+  `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/dataset/sft_release_v2/`
+  — previous SFT releases (121 / 225 records) built from reasoning-less
+  trajectories; kept as a baseline for comparison.
+- `/scr/rucnyz/projects/yefei_yang_web/WebAgent_CUA/training/qwen_sft/`
+  — Qwen SFT training: `convert_to_sharegpt.py` (JSON messages → LLaMA-Factory
+  ShareGPT), `qwen9b_lora_full.yaml` (Qwen3.5-9B LoRA, rank 16, 3 epochs, lr 1e-4,
+  template `qwen`), `run_train.sh`, `openai_compat_transformers_server.py` (serves
+  the LoRA for eval).
 
 ## Known issues / next steps
 
